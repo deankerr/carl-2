@@ -1,15 +1,17 @@
 import { World } from 'miniplex'
 import { Application } from 'pixi.js'
 
+import { config } from 'config'
 import { Entity, createEntityFactory } from './entity'
+import { createTestRegion } from './region'
 import { createRenderSystem } from './system/render'
 
 export function createEngine() {
   console.log('create engine')
 
   const app = new Application<HTMLCanvasElement>({
-    width: 800,
-    height: 600,
+    width: config.appWidth,
+    height: config.appHeight,
     backgroundColor: 0x5bba6f
   })
 
@@ -19,7 +21,16 @@ export function createEngine() {
   createEntity('player', 50, 50)
 
   const render = createRenderSystem(app, world)
-  return { app, world, createEntity, render }
+
+  const run = () => {
+    createTestRegion(world, (x, y) => {
+      createEntity('wall', x, y)
+    })
+
+    render()
+  }
+
+  return { app, world, createEntity, render, run }
 }
 
 export const engine = createEngine()

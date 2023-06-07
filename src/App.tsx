@@ -24,8 +24,6 @@ function PixiJS({ engine }: AppProps) {
     const div = ref.current
     if (div) div.appendChild(engine.app.view)
 
-    // engine.render()
-
     return () => {
       console.log('<PixiJS> destroy')
       if (div) div.removeChild(engine.app.view)

@@ -26,6 +26,20 @@ export const entityTemplates = {
       color: 'rgb(0, 128, 128)',
       bgColor: 'black'
     }
+  },
+  wall: {
+    glyph: {
+      char: 'wall',
+      color: 'rgb(0, 128, 128)',
+      bgColor: 'black'
+    }
+  },
+  floor: {
+    glyph: {
+      char: 'period',
+      color: 'rgb(0, 128, 128)',
+      bgColor: 'black'
+    }
   }
 }
 
