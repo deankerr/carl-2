@@ -1,6 +1,6 @@
 const tileSize = 8
 const gameWidth = 80
-const gameHeight = 25
+const gameHeight = 40
 
 export const config = {
   tileSize,
