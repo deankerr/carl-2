@@ -14,6 +14,9 @@ dependencies:
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
+  statery:
+    specifier: ^0.6.3
+    version: 0.6.3(react@18.2.0)
 
 devDependencies:
   '@babel/core':
@@ -4675,6 +4678,14 @@ packages:
   /stackback@0.0.2:
     resolution: {integrity: sha512-1XMJE5fQo1jGH6Y/7ebnwPOBEkIEnT4QF32d5R1+VXdXveM0IBMJt8zfaxX1P3QhVwrYe+576+jkANtSS2mBbw==}
     dev: true
+
+  /statery@0.6.3(react@18.2.0):
+    resolution: {integrity: sha512-l4lrLF79kslh+tAnJXu8C5/N4VjPDqdR3KibPpCoFoNOj9H/U4+YaTcUN++CKMg9dz95uGypuVXeE5bzRFK4tQ==}
+    peerDependencies:
+      react: '>=18.0'
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /std-env@3.3.3:
     resolution: {integrity: sha512-Rz6yejtVyWnVjC1RFvNmYL10kgjC49EOghxWn0RFqlCHGFpQx+Xe7yW3I4ceK1SGrWIGMjD5Kbue8W/udkbMJg==}

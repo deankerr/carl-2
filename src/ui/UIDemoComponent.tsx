@@ -1,7 +1,14 @@
-export function UIDemoComponent() {
+type Props = {
+  value: string
+  position: number
+}
+
+export function UIDemoComponent({ value, position }: Props) {
   return (
-    <div className="absolute top-12 w-48 bg-red-200 text-center text-amber-800 hover:bg-red-400">
-      UI Test Component
+    <div
+      className={`w-48 bg-red-200 text-center text-amber-800 hover:bg-red-400`}
+    >
+      {value ? value : 'UI Test Component'}
     </div>
   )
 }
