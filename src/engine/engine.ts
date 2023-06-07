@@ -1,5 +1,6 @@
 import { World } from 'miniplex'
-import { Application } from 'pixi.js'
+import { Application, Assets } from 'pixi.js'
+import manifest from '../public/assets/manifest.json'
 import { Entity, createEntityFactory } from './entity'
 import { createRenderSystem } from './system/render'
 
@@ -22,7 +23,16 @@ export function createEngine() {
 }
 
 export const engine = createEngine()
-engine.render()
+
+export async function loadManifest() {
+  console.log('init manifest loader')
+  await Assets.init({ manifest: manifest })
+  const bundleIds = manifest.bundles.map((bundle) => bundle.name)
+  await Assets.loadBundle(bundleIds)
+  console.log('assets loaded?')
+}
+
+// engine.render()
 
 // export function createDemoEngine(app: Application<HTMLCanvasElement>) {
 //   console.log('create demo engine')

@@ -1,7 +1,11 @@
 import { engine } from 'engine/engine'
 import { useLayoutEffect, useRef } from 'react'
 
-function App() {
+type AppProps = {
+  engine: typeof engine
+}
+
+function App({ engine }: AppProps) {
   return (
     <div className="flex h-screen flex-col items-center justify-items-center bg-gray-800">
       <div className="relative bg-yellow-100">
@@ -11,11 +15,7 @@ function App() {
   )
 }
 
-type PixiJSProps = {
-  engine: typeof engine
-}
-
-function PixiJS({ engine }: PixiJSProps) {
+function PixiJS({ engine }: AppProps) {
   const ref = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {
