@@ -7,7 +7,7 @@ export function createRenderSystem(app: Application, world: World<Entity>) {
 
   return () => {
     for (const entity of entities) {
-      const sprite = Sprite.from('/src/public/' + entity.glyph.char + '.png')
+      const sprite = Sprite.from(entity.glyph.char)
       sprite.position.set(entity.position.x, entity.position.y)
       sprite.scale.set(4)
 

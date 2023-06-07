@@ -20,3 +20,5 @@ root.render(
     <App engine={engine} />
   </StrictMode>
 )
+
+engine.render()

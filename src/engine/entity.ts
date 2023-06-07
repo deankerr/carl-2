@@ -22,7 +22,7 @@ export type Entity = {
 export const entityTemplates = {
   player: {
     glyph: {
-      char: 'pc',
+      char: 'A',
       color: 'rgb(0, 128, 128)',
       bgColor: 'black'
     }
