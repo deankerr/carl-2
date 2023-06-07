@@ -1,0 +1,10 @@
+{
+  "bundles": [
+    {
+      "name": "bundle",
+      "assets": {
+        "spritesheet": "src/public/assets/spritesheet.json"
+      }
+    }
+  ]
+}
