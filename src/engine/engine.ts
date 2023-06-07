@@ -3,8 +3,14 @@ import { Application } from 'pixi.js'
 import { Entity, createEntityFactory } from './entity'
 import { createRenderSystem } from './system/render'
 
-export function createEngine(app: Application<HTMLCanvasElement>) {
+export function createEngine() {
   console.log('create engine')
+
+  const app = new Application<HTMLCanvasElement>({
+    width: 800,
+    height: 600,
+    backgroundColor: 0x5bba6f
+  })
 
   const world = new World<Entity>()
   const createEntity = createEntityFactory(world)
@@ -14,6 +20,9 @@ export function createEngine(app: Application<HTMLCanvasElement>) {
   const render = createRenderSystem(app, world)
   return { app, world, createEntity, render }
 }
+
+export const engine = createEngine()
+engine.render()
 
 // export function createDemoEngine(app: Application<HTMLCanvasElement>) {
 //   console.log('create demo engine')

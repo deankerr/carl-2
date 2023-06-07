@@ -1,38 +1,36 @@
-import { createEngine } from 'engine/engine'
-import { Application } from 'pixi.js'
+import { engine } from 'engine/engine'
 import { useLayoutEffect, useRef } from 'react'
 
 function App() {
   return (
     <div className="flex h-screen flex-col items-center justify-items-center bg-gray-800">
       <div className="relative bg-yellow-100">
-        <PixiJS />
+        <PixiJS engine={engine} />
       </div>
     </div>
   )
 }
 
-function PixiJS() {
+type PixiJSProps = {
+  engine: typeof engine
+}
+
+function PixiJS({ engine }: PixiJSProps) {
   const ref = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {
-    console.log('PixiJS create')
-    const app = new Application<HTMLCanvasElement>({
-      width: 800,
-      height: 600,
-      backgroundColor: 0x5bba6f
-    })
+    console.log('<PixiJS> create')
 
-    if (ref.current) ref.current.appendChild(app.view)
+    const div = ref.current
+    if (div) div.appendChild(engine.app.view)
 
-    const engine = createEngine(app)
-    engine.render()
+    // engine.render()
 
     return () => {
-      console.log('PixiJS destroy')
-      app.destroy(true, true)
+      console.log('<PixiJS> destroy')
+      if (div) div.removeChild(engine.app.view)
     }
-  }, [])
+  }, [engine.app.view])
 
   return <div ref={ref} />
 }
