@@ -3,7 +3,7 @@ type Props = {
   position: number
 }
 
-export function UIDemoComponent({ value, position }: Props) {
+export function UIDemoComponent({ value }: Props) {
   return (
     <div
       className={`w-48 bg-red-200 text-center text-amber-800 hover:bg-red-400`}

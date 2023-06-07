@@ -17,6 +17,7 @@
     "typecheck": "tsc --project tsconfig.json --noEmit"
   },
   "dependencies": {
+    "miniplex": "2.0.0-next.20",
     "pixi.js": "^7.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -40,7 +41,6 @@
     "autoprefixer": "^10.4.14",
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-tailwindcss": "^3.12.1",
