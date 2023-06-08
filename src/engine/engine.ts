@@ -27,8 +27,11 @@ export function createEngine() {
 
   const run = () => {
     createTestRegion(world, (x, y) => {
-      createEntity('wall', x, y)
+      if (x > 15 && x < 35 && y > 6 && y < 18) createEntity('path', x, y)
+      else createEntity('wall', x, y)
     })
+
+    createEntity('player', 30, 15)
 
     render()
   }

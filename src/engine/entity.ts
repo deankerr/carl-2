@@ -22,22 +22,22 @@ export type Entity = {
 export const entityTemplates = {
   player: {
     glyph: {
-      char: 'A',
-      color: 'rgb(0, 128, 128)',
+      char: '@',
+      color: 'rgb(140, 237, 39)',
       bgColor: 'black'
     }
   },
   wall: {
     glyph: {
       char: 'wall',
-      color: 'rgb(0, 128, 128)',
+      color: 'rgb(118, 118, 118)',
       bgColor: 'black'
     }
   },
-  floor: {
+  path: {
     glyph: {
-      char: 'period',
-      color: 'rgb(0, 128, 128)',
+      char: 'path',
+      color: 'rgb(38, 38, 38)',
       bgColor: 'black'
     }
   }

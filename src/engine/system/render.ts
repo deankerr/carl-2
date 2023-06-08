@@ -13,6 +13,7 @@ export function createRenderSystem(app: Application, world: World<Entity>) {
         entity.position.x * config.tileSize,
         entity.position.y * config.tileSize
       )
+      sprite.tint = entity.glyph.color
 
       app.stage.addChild(sprite)
     }
