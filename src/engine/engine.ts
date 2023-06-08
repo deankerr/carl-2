@@ -9,20 +9,23 @@ import { createRenderSystem } from './system/render'
 export function createEngine() {
   console.log('create engine')
 
+  // PIXI
   const app = new Application<HTMLCanvasElement>({
     width: config.appWidth,
     height: config.appHeight,
-    backgroundColor: 0x000000
+    backgroundColor: 'rgb(11, 11, 11)'
   })
+
+  app.stage.sortableChildren = true
 
   window.addEventListener('resize', () => resizeApp(app))
   resizeApp(app)
 
+  // Entities
   const world = new World<Entity>()
   const createEntity = createEntityFactory(world)
 
-  // createEntity('player', 50, 50)
-
+  // Systems
   const render = createRenderSystem(app, world)
 
   const run = () => {

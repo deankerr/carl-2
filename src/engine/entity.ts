@@ -11,12 +11,15 @@ export type Entity = {
     char: string // ? keyof spritesheet ids
     color: string // ? future HSL Color object
     bgColor: string // ? ^
+    zIndex: number //? replace with entity catagories
   }
 
   position: {
     x: number // grid reference
     y: number
   }
+
+  solid?: true // blocks movement
 }
 
 export const entityTemplates = {
@@ -24,24 +27,28 @@ export const entityTemplates = {
     glyph: {
       char: '@',
       color: 'rgb(140, 237, 39)',
-      bgColor: 'black'
+      bgColor: 'black',
+      zIndex: 3
     }
   },
   wall: {
     glyph: {
       char: 'wall',
       color: 'rgb(118, 118, 118)',
-      bgColor: 'black'
-    }
+      bgColor: 'black',
+      zIndex: 1
+    },
+    solid: true
   },
   path: {
     glyph: {
       char: 'path',
       color: 'rgb(38, 38, 38)',
-      bgColor: 'black'
+      bgColor: 'black',
+      zIndex: 1
     }
   }
-}
+} satisfies Record<string, Partial<Omit<Entity, 'id' | 'base'>>>
 
 export function createEntityFactory(world: World<Entity>) {
   let entityCount = 0 // TODO move to state

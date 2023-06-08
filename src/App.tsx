@@ -7,8 +7,8 @@ type AppProps = {
 
 function App({ engine }: AppProps) {
   return (
-    <div className="flex h-screen flex-col items-center justify-items-center bg-gray-800">
-      <div className="relative bg-yellow-100">
+    <div className="flex h-screen items-center justify-items-center bg-gray-800">
+      <div className="relative">
         <PixiJS engine={engine} />
       </div>
     </div>
