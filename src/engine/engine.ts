@@ -4,7 +4,7 @@ import { Application } from 'pixi.js'
 import { config } from 'config'
 import { Entity, createEntityFactory } from './entity'
 import { createInput } from './input'
-import { createTestRegion } from './region'
+import { createOutdoors } from './region'
 import { createRenderSystem } from './system/render'
 
 export function createEngine() {
@@ -14,7 +14,7 @@ export function createEngine() {
   const app = new Application<HTMLCanvasElement>({
     width: config.appWidth,
     height: config.appHeight,
-    backgroundColor: 'rgb(11, 11, 11)'
+    backgroundColor: 'rgb(2, 5, 2)'
   })
 
   app.stage.sortableChildren = true
@@ -30,10 +30,11 @@ export function createEngine() {
   const render = createRenderSystem(app, world)
 
   // temp create region
-  createTestRegion(world, (x, y) => {
-    if (x > 15 && x < 35 && y > 6 && y < 18) createEntity('path', x, y)
-    else createEntity('wall', x, y)
-  })
+  // createTestRegion(world, (x, y) => {
+  //   if (x > 15 && x < 35 && y > 6 && y < 18) createEntity('deadTree', x, y)
+  //   else createEntity('wall', x, y)
+  // })
+
   const player = createEntity('player', 30, 15)
 
   const update = (tempAction: string) => {
@@ -52,10 +53,15 @@ export function createEngine() {
         player.position.y++
     }
   }
-
   createInput(update)
 
-  return { app, world, createEntity, render, update }
+  const init = () => {
+    createOutdoors()
+
+    app.ticker.add(render)
+  }
+
+  return { app, world, createEntity, render, update, init }
 }
 
 // export const engine = createEngine()

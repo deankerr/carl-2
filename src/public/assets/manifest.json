@@ -3,7 +3,7 @@
     {
       "name": "bundle",
       "assets": {
-        "spritesheet": "src/public/assets/spritesheet.json"
+        "spritesheet": "src/public/assets/16.json"
       }
     }
   ]

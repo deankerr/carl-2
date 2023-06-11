@@ -28,7 +28,7 @@ export const entityTemplates = {
     glyph: {
       char: '@',
       color: 'rgb(140, 237, 39)',
-      bgColor: 'black',
+      bgColor: '',
       zIndex: 3
     },
     isPlayer: true
@@ -37,7 +37,7 @@ export const entityTemplates = {
     glyph: {
       char: 'wall',
       color: 'rgb(118, 118, 118)',
-      bgColor: 'black',
+      bgColor: '',
       zIndex: 1
     },
     solid: true
@@ -46,7 +46,31 @@ export const entityTemplates = {
     glyph: {
       char: 'path',
       color: 'rgb(38, 38, 38)',
-      bgColor: 'black',
+      bgColor: '',
+      zIndex: 1
+    }
+  },
+  deadTree: {
+    glyph: {
+      char: 'tree',
+      color: 'rgb(98, 58, 3)',
+      bgColor: '',
+      zIndex: 1
+    }
+  },
+  grass: {
+    glyph: {
+      char: 'grass',
+      color: 'rgb(100, 111, 42)',
+      bgColor: '',
+      zIndex: 1
+    }
+  },
+  deadGrass: {
+    glyph: {
+      char: 'dirt',
+      color: 'rgb(86, 67, 61)',
+      bgColor: '',
       zIndex: 1
     }
   }
