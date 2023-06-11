@@ -4,19 +4,38 @@ import { World } from 'miniplex'
 import { Application, Sprite } from 'pixi.js'
 
 export function createRenderSystem(app: Application, world: World<Entity>) {
-  const entities = world.with('position', 'glyph')
+  const spritelessEntities = world.with('position', 'glyph').without('sprite')
+  const spriteEntities = world.with('position', 'glyph', 'sprite')
 
   return () => {
-    for (const entity of entities) {
+    // create sprite for new entities
+    for (const entity of spritelessEntities) {
       const sprite = Sprite.from(entity.glyph.char)
-      sprite.position.set(
-        entity.position.x * config.tileSize + Math.floor(config.marginPx / 2),
-        entity.position.y * config.tileSize + Math.floor(config.marginPx / 2)
-      )
-      sprite.tint = entity.glyph.color
+
+      const { x, y } = calculateScreenPosition(entity.position)
+      sprite.position.set(x, y)
       sprite.zIndex = entity.glyph.zIndex
 
+      sprite.tint = entity.glyph.color
+
+      world.addComponent(entity, 'sprite', sprite)
       app.stage.addChild(sprite)
+
+      console.log('Create sprite for', entity.base)
+    }
+
+    // update sprites
+    // TODO only update if necessary
+    for (const entity of spriteEntities) {
+      const { x, y } = calculateScreenPosition(entity.position)
+      entity.sprite.position.set(x, y)
     }
   }
+}
+
+function calculateScreenPosition(position: { x: number; y: number }) {
+  const x = position.x * config.tileSize + Math.floor(config.marginPx / 2)
+  const y = position.y * config.tileSize + Math.floor(config.marginPx / 2)
+
+  return { x, y }
 }

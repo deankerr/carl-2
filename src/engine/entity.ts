@@ -1,17 +1,17 @@
 import { World } from 'miniplex'
+import { Sprite } from 'pixi.js'
 
 export type Entity = {
   id: number // ?
   base: string // ? keyof template
 
+  sprite?: Sprite
   // Components
-
-  // ? temp
   glyph: {
     char: string // ? keyof spritesheet ids
     color: string // ? future HSL Color object
     bgColor: string // ? ^
-    zIndex: number //? replace with entity catagories
+    zIndex: number //? replace with entity catagories + pixi containers
   }
 
   position: {
@@ -19,6 +19,7 @@ export type Entity = {
     y: number
   }
 
+  isPlayer?: true
   solid?: true // blocks movement
 }
 
@@ -29,7 +30,8 @@ export const entityTemplates = {
       color: 'rgb(140, 237, 39)',
       bgColor: 'black',
       zIndex: 3
-    }
+    },
+    isPlayer: true
   },
   wall: {
     glyph: {

@@ -3,6 +3,7 @@ import { Application } from 'pixi.js'
 
 import { config } from 'config'
 import { Entity, createEntityFactory } from './entity'
+import { createInput } from './input'
 import { createTestRegion } from './region'
 import { createRenderSystem } from './system/render'
 
@@ -28,21 +29,37 @@ export function createEngine() {
   // Systems
   const render = createRenderSystem(app, world)
 
-  const run = () => {
-    createTestRegion(world, (x, y) => {
-      if (x > 15 && x < 35 && y > 6 && y < 18) createEntity('path', x, y)
-      else createEntity('wall', x, y)
-    })
+  // temp create region
+  createTestRegion(world, (x, y) => {
+    if (x > 15 && x < 35 && y > 6 && y < 18) createEntity('path', x, y)
+    else createEntity('wall', x, y)
+  })
+  const player = createEntity('player', 30, 15)
 
-    createEntity('player', 30, 15)
-
-    render()
+  const update = (tempAction: string) => {
+    console.log('update', tempAction)
+    switch (tempAction) {
+      case 'pc left':
+        player.position.x--
+        break
+      case 'pc right':
+        player.position.x++
+        break
+      case 'pc up':
+        player.position.y--
+        break
+      case 'pc down':
+        player.position.y++
+    }
   }
 
-  return { app, world, createEntity, render, run }
+  createInput(update)
+
+  return { app, world, createEntity, render, update }
 }
 
-export const engine = createEngine()
+// export const engine = createEngine()
+// console.log('engine', engine)
 
 function resizeApp(app: Application<HTMLCanvasElement>) {
   const screenWidth = Math.max(
