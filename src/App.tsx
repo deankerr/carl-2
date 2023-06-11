@@ -1,5 +1,5 @@
-import { engine } from 'engine/engine'
 import { useLayoutEffect, useRef } from 'react'
+import { engine } from './'
 
 type AppProps = {
   engine: typeof engine
@@ -7,10 +7,10 @@ type AppProps = {
 
 function App({ engine }: AppProps) {
   return (
-    <div className="flex h-screen items-center justify-items-center bg-gray-800">
-      <div className="relative">
-        <PixiJS engine={engine} />
-      </div>
+    <div className="flex h-screen items-center justify-center bg-gray-800">
+      {/* <div className="relative"> */}
+      <PixiJS engine={engine} />
+      {/* </div> */}
     </div>
   )
 }
