@@ -26,7 +26,6 @@ const output = {
 
 for (let y = 0; y < labels.length; y++) {
   const row = labels[y].split(' ')
-  console.log(row)
   for (let x = 0; x < row.length; x++) {
     output.frames[row[x]] = {
       frame: {
@@ -34,17 +33,17 @@ for (let y = 0; y < labels.length; y++) {
         y: y * spriteHeightPx,
         w: spriteWidthPx,
         h: spriteHeightPx
-      },
-      spriteSourceSize: {
-        x: x * spriteWidthPx,
-        y: y * spriteHeightPx,
-        w: spriteWidthPx,
-        h: spriteHeightPx
-      },
-      sourceSize: {
-        w: spriteWidthPx,
-        h: spriteHeightPx
       }
+      // spriteSourceSize: {
+      //   x: 0,
+      //   y: 0,
+      //   w: spriteWidthPx,
+      //   h: spriteHeightPx
+      // },
+      // sourceSize: {
+      //   w: spriteWidthPx,
+      //   h: spriteHeightPx
+      // }
     }
   }
 }

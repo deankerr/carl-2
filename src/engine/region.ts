@@ -23,8 +23,8 @@ export function createTestRegion(
 
 export function createOutdoors() {
   const spawnTrees = 50
-  const spawnGrass = 200
-  const spawnDeadGrass = 200
+  const spawnGrass = 400
+  const spawnDeadGrass = 400
 
   for (let i = 0; i < spawnTrees; i++) {
     engine.createEntity('deadTree', random(0, gameWidth), random(0, gameHeight))

@@ -68,7 +68,7 @@ export const entityTemplates = {
   },
   deadGrass: {
     glyph: {
-      char: 'dirt',
+      char: 'debris',
       color: 'rgb(86, 67, 61)',
       bgColor: '',
       zIndex: 1
