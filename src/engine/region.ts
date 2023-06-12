@@ -23,6 +23,14 @@ export function createOutdoors() {
     rocks: 1,
     mushroom: 1,
   })
+
+  const lake = { x: 35, y: 10, x2: 55, y2: 20 }
+
+  for (let yi = lake.y; yi < lake.y2; yi++) {
+    for (let xi = lake.x; xi < lake.x2; xi++) {
+      engine.createEntity('water', xi, yi)
+    }
+  }
 }
 
 export function createOcean() {

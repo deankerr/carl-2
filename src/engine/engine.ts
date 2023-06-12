@@ -48,7 +48,7 @@ export function createEngine() {
       width: config.viewportWidthCells,
       height: config.viewportHeightCells,
     },
-    log: {
+    stats: {
       fps: 0,
       spritesTotal: 0,
       spritesRendered: 0,
@@ -69,6 +69,16 @@ export function createEngine() {
     const w = createEntity('water', 30, 16)
     console.log('w:', w)
   }
+
+  // FPS counter
+  setInterval(() => {
+    store.set((state) => ({
+      stats: {
+        ...state.stats,
+        fps: Math.floor(app.ticker.FPS),
+      },
+    }))
+  }, 250)
 
   return { init, createEntity, update, world, systems, player, store }
 }

@@ -85,10 +85,9 @@ export function createSpriteSystem() {
 
     // update log
     store.set((state) => ({
-      log: {
-        ...state.log,
-        fps: Math.floor(app.ticker.FPS),
-        spritesTotal: state.log.spritesTotal + spritesCreated,
+      stats: {
+        ...state.stats,
+        spritesTotal: state.stats.spritesTotal + spritesCreated,
         spritesRendered,
       },
     }))
