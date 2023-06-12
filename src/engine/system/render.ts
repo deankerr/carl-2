@@ -1,9 +1,9 @@
-import { engine } from '@/.'
+import { app, engine } from '@/.'
 import { config } from 'config'
 import { Sprite } from 'pixi.js'
 
 export function createRenderSystem() {
-  const { app, world, player, store } = engine
+  const { world, player, store } = engine
 
   // queries
   const spritelessEntities = world.with('position', 'glyph').without('sprite')

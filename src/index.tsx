@@ -1,20 +1,16 @@
 import App from 'App'
 import { createEngine } from 'engine/engine'
-import { Assets } from 'pixi.js'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import 'tailwindcss/tailwind.css'
 import './index.css'
-import manifest from './public/assets/manifest.json'
+
+import { createPIXIApp, loadAssetBundle } from './lib/pixi'
+
+export const app = createPIXIApp()
+await loadAssetBundle()
 
 export const engine = createEngine()
-
-console.log('init manifest loader')
-await Assets.init({ manifest: manifest })
-const bundleIds = manifest.bundles.map((bundle) => bundle.name)
-await Assets.loadBundle(bundleIds)
-console.log('assets loaded?')
-
 engine.init()
 
 const container = document.getElementById('root') as HTMLDivElement
