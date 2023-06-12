@@ -12,12 +12,12 @@ export function createRenderSystem() {
   return () => {
     // update viewport location
     store.set((state) => ({
-    testCurrentRegion: 'blah',
-    viewport: {
-      ...state.viewport,
-      x: player.position.x - (Math.floor(state.viewport.width / 2)),
-      y: player.position.y - (Math.floor(state.viewport.height / 2))
-    }
+      testCurrentRegion: 'blah',
+      viewport: {
+        ...state.viewport,
+        x: player.position.x - Math.floor(state.viewport.width / 2),
+        y: player.position.y - Math.floor(state.viewport.height / 2),
+      },
     }))
 
     const { viewport } = store.state
@@ -45,9 +45,16 @@ export function createRenderSystem() {
   }
 }
 
-function calculateScreenPosition(viewport: typeof engine.store.state.viewport, position: { x: number; y: number }) {
-  const x = (position.x - viewport.x) * config.tileSizePx + Math.floor(config.paddingPx / 2)
-  const y = (position.y - viewport.y) * config.tileSizePx + Math.floor(config.paddingPx / 2)
+function calculateScreenPosition(
+  viewport: typeof engine.store.state.viewport,
+  position: { x: number; y: number }
+) {
+  const x =
+    (position.x - viewport.x) * config.tileSizePx +
+    Math.floor(config.paddingPx / 2)
+  const y =
+    (position.y - viewport.y) * config.tileSizePx +
+    Math.floor(config.paddingPx / 2)
 
   return { x, y }
 }

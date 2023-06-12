@@ -54,13 +54,13 @@ export function createEngine() {
   const system: System[] = []
 
   const store = makeStore({
-   viewport: {
-    x: 0,
-    y: 0,
-    width: config.viewportWidthCells,
-    height: config.viewportHeightCells
+    viewport: {
+      x: 0,
+      y: 0,
+      width: config.viewportWidthCells,
+      height: config.viewportHeightCells,
     },
-    testCurrentRegion: 'outdoors'
+    testCurrentRegion: 'outdoors',
   })
 
   const init = () => {

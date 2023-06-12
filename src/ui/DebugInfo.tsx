@@ -6,8 +6,10 @@ type Props = {
 }
 
 export function DebugInfo({ engine }: Props) {
-  const {viewport} = useStore(engine.store)
+  const { viewport } = useStore(engine.store)
   return (
-    <div>Entities: {engine.world.size} Viewport: {viewport.x} {viewport.y}</div>
+    <div>
+      Entities: {engine.world.size} Viewport: {viewport.x} {viewport.y}
+    </div>
   )
 }
