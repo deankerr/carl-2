@@ -11,9 +11,9 @@ export type Region = {
 
 export function createOutdoors() {
   spawnEachCellChance({
-    grass: 10,
+    grass: 20,
     nothing: 3,
-    deadGrass: 2,
+    deadGrass: 5,
     shrub: 1,
     plant: 1,
     tree: 1,
@@ -23,6 +23,10 @@ export function createOutdoors() {
     rocks: 1,
     mushroom: 1,
   })
+}
+
+export function createOcean() {
+  spawnEachCellChance({ water: 1 })
 }
 
 function spawnEachCellChance(keys: Partial<Record<EntityKey, number>>) {

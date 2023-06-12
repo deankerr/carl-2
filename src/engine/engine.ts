@@ -5,7 +5,7 @@ import { app } from '@/.'
 import { config } from 'config'
 import { Entity, createEntityFactory } from './entity'
 import { createInput } from './input'
-import { createOutdoors } from './region'
+import { createOcean } from './region'
 import { createRenderSystem } from './system/render'
 
 type System = () => void
@@ -58,10 +58,11 @@ export function createEngine() {
   const init = () => {
     // Systems
     const renderSystem = createRenderSystem()
-    systems.push(renderSystem)
-
-    createOutdoors()
+    // systems.push(renderSystem)
     app.ticker.add(renderSystem)
+
+    // createOutdoors()
+    createOcean()
   }
 
   return { init, createEntity, update, world, systems, player, store }

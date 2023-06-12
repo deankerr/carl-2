@@ -1,6 +1,6 @@
 import { app, engine } from '@/.'
 import { config } from 'config'
-import { Sprite } from 'pixi.js'
+import { AnimatedSprite, Sprite, Texture } from 'pixi.js'
 
 type Viewport = typeof engine.store.state.viewport
 type Position = { x: number; y: number }
@@ -27,7 +27,19 @@ export function createRenderSystem() {
     // create sprite for new entities
     let spritesCreated = 0
     for (const entity of spritelessEntities) {
-      const sprite = Sprite.from(entity.glyph.char)
+      let sprite: Sprite | AnimatedSprite
+
+      if (entity.animatedSprite && Array.isArray(entity.base.char)) {
+        const texture = entity.base.char.map((char) => Texture.from(char))
+
+        const animatedSprite = new AnimatedSprite(texture)
+        animatedSprite.animationSpeed = 0.0125
+        animatedSprite.play()
+
+        sprite = animatedSprite
+      } else {
+        sprite = Sprite.from(entity.glyph.char)
+      }
 
       const { x, y } = calculateScreenPosition(viewport, entity.position)
       sprite.position.set(x, y)

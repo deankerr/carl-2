@@ -1,11 +1,13 @@
 import { World } from 'miniplex'
-import { Sprite } from 'pixi.js'
+import { AnimatedSprite, Sprite } from 'pixi.js'
 import { entityTemplates } from './templates'
 import { pick } from './util'
 
+// TODO cleanup types
+
 export type Entity = {
   id: number // ?
-  base: string // ? keyof template
+  base: (typeof entityTemplates)[keyof typeof entityTemplates]
 
   glyph: EntityGlyph
 
@@ -16,6 +18,7 @@ export type Entity = {
   }
 
   sprite?: Sprite
+  spriteAnimated?: AnimatedSprite
 } & Partial<EntityFlags>
 
 export type EntityGlyph = {
@@ -28,6 +31,7 @@ export type EntityGlyph = {
 export type EntityFlags = {
   isPlayer?: true
   solid?: true // blocks movement
+  animatedSprite?: true
 }
 
 export type EntityKey = keyof typeof entityTemplates | 'nothing'
@@ -42,9 +46,9 @@ export function createEntityFactory(world: World<Entity>) {
   ): Entity => {
     const { char, color, zIndex, ...flags } = entityTemplates[key]
 
-    const entity = {
+    const entity: Entity = {
       id: entityCount++,
-      base: key,
+      base: entityTemplates[key],
 
       glyph: {
         char: typeof char === 'string' ? char : pick(char),

@@ -127,6 +127,12 @@ export const entityTemplates = {
     color: ['rgb(69, 60, 55)'],
     zIndex: 1,
   },
+  water: {
+    char: ['water_1', 'water_2'],
+    color: ['rgb(43, 146, 187)'],
+    zIndex: 1,
+    animatedSprite: true,
+  },
 } satisfies Record<string, Template>
 
 /*

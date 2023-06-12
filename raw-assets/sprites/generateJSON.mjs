@@ -24,7 +24,7 @@ const sheets = [
     width: 16,
     height: 16,
     labels: [
-      'grassX1 grassX2 grassX3 grassX4 grassX5 grassX6 grassX7 grassX8',
+      'water_1 water_2',
       'grass_a1 grass_a2 grass_a3 grass_a4 grass_a5 grass_a6 grass_a7 grass_a8',
       'grass_b1 grass_b2 grass_b3 grass_b4 grass_b5 grass_b6 grass_b7 grass_b8',
       'flower_1 flower_2 flower_3 flower_4 flower_5 flower_6 flower_7 flower_8',
