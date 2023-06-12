@@ -48,7 +48,10 @@ export function createEngine() {
       width: config.viewportWidthCells,
       height: config.viewportHeightCells,
     },
-    testCurrentRegion: 'outdoors',
+    log: {
+      spritesTotal: 0,
+      spritesRendered: 0,
+    },
   })
 
   const init = () => {

@@ -12,7 +12,6 @@ export function createRenderSystem() {
   return () => {
     // update viewport location
     store.set((state) => ({
-      testCurrentRegion: 'blah',
       viewport: {
         ...state.viewport,
         x: player.position.x - Math.floor(state.viewport.width / 2),
@@ -23,6 +22,7 @@ export function createRenderSystem() {
     const { viewport } = store.state
 
     // create sprite for new entities
+    let spritesCreated = 0
     for (const entity of spritelessEntities) {
       const sprite = Sprite.from(entity.glyph.char)
 
@@ -34,14 +34,26 @@ export function createRenderSystem() {
 
       world.addComponent(entity, 'sprite', sprite)
       app.stage.addChild(sprite)
+      spritesCreated++
     }
 
     // update sprites
     // TODO only update if necessary
+    let spritesRendered = 0
     for (const entity of spriteEntities) {
       const { x, y } = calculateScreenPosition(viewport, entity.position)
       entity.sprite.position.set(x, y)
+      spritesRendered++
     }
+
+    // update log
+    store.set((state) => ({
+      log: {
+        ...state.log,
+        spritesTotal: state.log.spritesTotal + spritesCreated,
+        spritesRendered,
+      },
+    }))
   }
 }
 
