@@ -49,6 +49,7 @@ export function createEngine() {
       height: config.viewportHeightCells,
     },
     log: {
+      fps: 0,
       spritesTotal: 0,
       spritesRendered: 0,
     },

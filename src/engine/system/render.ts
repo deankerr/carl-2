@@ -59,6 +59,7 @@ export function createRenderSystem() {
     store.set((state) => ({
       log: {
         ...state.log,
+        fps: Math.floor(app.ticker.FPS),
         spritesTotal: state.log.spritesTotal + spritesCreated,
         spritesRendered,
       },
