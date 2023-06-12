@@ -2,6 +2,9 @@ import { app, engine } from '@/.'
 import { config } from 'config'
 import { Sprite } from 'pixi.js'
 
+type Viewport = typeof engine.store.state.viewport
+type Position = { x: number; y: number }
+
 export function createRenderSystem() {
   const { world, player, store } = engine
 
@@ -43,7 +46,13 @@ export function createRenderSystem() {
     for (const entity of spriteEntities) {
       const { x, y } = calculateScreenPosition(viewport, entity.position)
       entity.sprite.position.set(x, y)
-      spritesRendered++
+
+      if (shouldRenderSprite(viewport, entity.position)) {
+        entity.sprite.renderable = true
+        spritesRendered++
+      } else {
+        entity.sprite.renderable = false
+      }
     }
 
     // update log
@@ -57,10 +66,7 @@ export function createRenderSystem() {
   }
 }
 
-function calculateScreenPosition(
-  viewport: typeof engine.store.state.viewport,
-  position: { x: number; y: number }
-) {
+function calculateScreenPosition(viewport: Viewport, position: Position) {
   const x =
     (position.x - viewport.x) * config.tileSizePx +
     Math.floor(config.paddingPx / 2)
@@ -69,4 +75,13 @@ function calculateScreenPosition(
     Math.floor(config.paddingPx / 2)
 
   return { x, y }
+}
+
+function shouldRenderSprite(viewport: Viewport, position: Position) {
+  return (
+    position.x >= viewport.x &&
+    position.x <= viewport.x + viewport.width &&
+    position.y >= viewport.y &&
+    position.y <= viewport.y + viewport.height
+  )
 }
