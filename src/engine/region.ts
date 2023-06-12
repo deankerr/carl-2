@@ -1,5 +1,4 @@
 import { config } from 'config'
-import { World } from 'miniplex'
 import { engine } from '../'
 import { Entity, EntityKey } from './entity'
 import { pick } from './util'
@@ -10,26 +9,19 @@ export type Region = {
   entities: Entity[]
 }
 
-export function createTestRegion(
-  world: World<Entity>,
-  callback: (x: number, y: number) => unknown
-) {
-  for (let yi = 0; yi < gameHeight; yi++) {
-    for (let xi = 0; xi < gameWidth; xi++) {
-      callback(xi, yi)
-    }
-  }
-}
-
 export function createOutdoors() {
   spawnEachCellChance({
+    grass: 5,
+    deadGrass: 4,
+    nothing: 3,
+    shrub: 2,
+    plant: 2,
     tree: 1,
     deadTree: 1,
-    deadGrass: 4,
-    shrub: 2,
-    grassX: 5,
     flowers: 1,
-    nothing: 2
+    hill: 1,
+    rocks: 1,
+    mushroom: 1,
   })
 }
 
