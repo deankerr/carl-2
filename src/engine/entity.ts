@@ -17,9 +17,11 @@ export type Entity = {
     y: number
   }
 
-  sprite?: Sprite | AnimatedSprite
-  bgSprite?: Sprite
-  container?: Container
+  _sprite?: {
+    container: Container
+    background?: Sprite | AnimatedSprite
+    foreground: Sprite | AnimatedSprite
+  }
 } & Partial<EntityFlags>
 
 export type EntityGlyph = {

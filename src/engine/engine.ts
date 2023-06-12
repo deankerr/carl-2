@@ -5,8 +5,8 @@ import { app } from '@/.'
 import { config } from 'config'
 import { Entity, createEntityFactory } from './entity'
 import { createInput } from './input'
-import { createOcean } from './region'
-import { createRenderSystem } from './system/render'
+import { createOutdoors } from './region'
+import { createSpriteSystem } from './system/spriteSystem'
 
 type System = () => void
 
@@ -57,12 +57,15 @@ export function createEngine() {
 
   const init = () => {
     // Systems
-    const renderSystem = createRenderSystem()
     // systems.push(renderSystem)
+    const renderSystem = createSpriteSystem()
+    const t = performance.now()
+    renderSystem()
+    console.log('Initial render:', performance.now() - t)
     app.ticker.add(renderSystem)
 
-    // createOutdoors()
-    createOcean()
+    createOutdoors()
+    // createOcean()
     const w = createEntity('water', 30, 16)
     console.log('w:', w)
   }
