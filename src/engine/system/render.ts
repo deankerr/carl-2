@@ -34,8 +34,8 @@ export function createRenderSystem(app: Application, world: World<Entity>) {
 }
 
 function calculateScreenPosition(position: { x: number; y: number }) {
-  const x = position.x * config.tileSize + Math.floor(config.marginPx / 2)
-  const y = position.y * config.tileSize + Math.floor(config.marginPx / 2)
+  const x = position.x * config.tileSize + Math.floor(config.paddingPx / 2)
+  const y = position.y * config.tileSize + Math.floor(config.paddingPx / 2)
 
   return { x, y }
 }

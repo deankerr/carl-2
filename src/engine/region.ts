@@ -11,11 +11,11 @@ export type Region = {
 
 export function createOutdoors() {
   spawnEachCellChance({
-    grass: 5,
-    deadGrass: 4,
+    grass: 10,
     nothing: 3,
-    shrub: 2,
-    plant: 2,
+    deadGrass: 2,
+    shrub: 1,
+    plant: 1,
     tree: 1,
     deadTree: 1,
     flowers: 1,

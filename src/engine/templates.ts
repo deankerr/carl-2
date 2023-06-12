@@ -27,7 +27,7 @@ export const entityTemplates = {
     zIndex: 1,
   },
   dust: {
-    char: ['debris'],
+    char: 'debris',
     color: 'rgb(94, 87, 83)',
     zIndex: 1,
   },
