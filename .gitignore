@@ -38,3 +38,6 @@ yarn-error.log*
 
 # vscode
 .history
+
+# wsl
+*:Zone.Identifier
