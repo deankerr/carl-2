@@ -10,6 +10,6 @@ export const config = {
   paddingPx,
   pixiAppWidth: viewportWidthCells * tileSizePx + paddingPx,
   pixiAppHeight: viewportHeightCells * tileSizePx + paddingPx,
-  overworldWidth: 100,
-  overworldHeight: 100,
+  overworldWidth: 10,
+  overworldHeight: 10,
 }

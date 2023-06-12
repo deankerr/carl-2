@@ -5,6 +5,7 @@ type Template = RandomGlyph & Partial<EntityFlags>
 type RandomGlyph = {
   char: string | string[]
   color: string | string[]
+  bgColor?: string | string[]
   zIndex: number
 }
 
@@ -129,7 +130,8 @@ export const entityTemplates = {
   },
   water: {
     char: ['water_1', 'water_2'],
-    color: ['rgb(43, 146, 187)'],
+    color: ['rgb(54, 107, 166)'],
+    bgColor: ['rgb(42, 85, 134)'],
     zIndex: 1,
     animatedSprite: true,
   },

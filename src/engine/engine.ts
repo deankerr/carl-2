@@ -63,6 +63,8 @@ export function createEngine() {
 
     // createOutdoors()
     createOcean()
+    const w = createEntity('water', 30, 16)
+    console.log('w:', w)
   }
 
   return { init, createEntity, update, world, systems, player, store }

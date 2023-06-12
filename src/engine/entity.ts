@@ -1,5 +1,5 @@
 import { World } from 'miniplex'
-import { AnimatedSprite, Sprite } from 'pixi.js'
+import { AnimatedSprite, Container, Sprite } from 'pixi.js'
 import { entityTemplates } from './templates'
 import { pick } from './util'
 
@@ -17,14 +17,15 @@ export type Entity = {
     y: number
   }
 
-  sprite?: Sprite
-  spriteAnimated?: AnimatedSprite
+  sprite?: Sprite | AnimatedSprite
+  bgSprite?: Sprite
+  container?: Container
 } & Partial<EntityFlags>
 
 export type EntityGlyph = {
   char: string // ? keyof spritesheet ids
   color: string // ? future HSL Color object
-  // bgColor?: string // ? ^
+  bgColor?: string // ? ^
   zIndex: number //? replace with entity catagories + pixi containers
 }
 
@@ -44,7 +45,9 @@ export function createEntityFactory(world: World<Entity>) {
     x: number,
     y: number
   ): Entity => {
-    const { char, color, zIndex, ...flags } = entityTemplates[key]
+    const template = { bgColor: undefined, ...entityTemplates[key] } // ! stupid bad hack FIXME
+
+    const { char, color, zIndex, bgColor, ...flags } = template
 
     const entity: Entity = {
       id: entityCount++,
@@ -60,6 +63,10 @@ export function createEntityFactory(world: World<Entity>) {
 
       ...flags,
     }
+
+    if (bgColor)
+      entity.glyph.bgColor =
+        typeof bgColor === 'string' ? bgColor : pick(bgColor)
 
     world.add(entity)
     return entity

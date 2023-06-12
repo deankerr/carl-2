@@ -1,5 +1,6 @@
+import { app, engine } from '@/.'
 import { bind } from 'mousetrap'
-import { engine } from '..'
+import { utils } from 'pixi.js'
 
 export function createInput(update: (tempAction: string) => void) {
   // player controls
@@ -8,5 +9,10 @@ export function createInput(update: (tempAction: string) => void) {
   bind('up', () => update('pc up'))
   bind('down', () => update('pc down'))
 
-  bind('E', () => console.log('Engine', engine))
+  bind('E', () => {
+    console.log('Engine', engine)
+    console.log('PIXI', app)
+    console.log('BaseTextureCache', utils.BaseTextureCache)
+    console.log('TextureCache', utils.TextureCache)
+  })
 }
