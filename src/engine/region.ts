@@ -1,5 +1,5 @@
+import { engine } from '@/.'
 import { config } from 'config'
-import { engine } from '../'
 import { Entity, EntityKey } from './entity'
 import { pick } from './util'
 
