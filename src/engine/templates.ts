@@ -60,6 +60,11 @@ export const entityTemplates = {
       'rgb(221, 72, 56)'
     ],
     zIndex: 1
+  },
+  grassX: {
+    char: ['grassX1', 'grassX2', 'grassX3', 'grassX4', 'grassX5'],
+    color: 'rgb(100, 111, 42)',
+    zIndex: 1
   }
 } satisfies Record<string, Template>
 

@@ -3,7 +3,8 @@
     {
       "name": "bundle",
       "assets": {
-        "spritesheet": "src/public/assets/16.json"
+        "oryx": "src/public/assets/oryx16.json",
+        "environment": "src/public/assets/environment16.json"
       }
     }
   ]

@@ -27,7 +27,7 @@ export function createOutdoors() {
     deadTree: 1,
     deadGrass: 4,
     shrub: 2,
-    grass: 5,
+    grassX: 5,
     flowers: 1,
     nothing: 2
   })
