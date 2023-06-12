@@ -4,5 +4,7 @@
   },
   "files.associations": {
     "*.css": "tailwindcss"
-  }
+  },
+  // vscode/prettier bug workaround https://github.com/prettier/prettier-vscode/issues/3019
+  "prettier.prettierPath": "./node_modules/prettier"
 }
