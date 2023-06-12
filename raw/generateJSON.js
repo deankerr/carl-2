@@ -7,7 +7,7 @@ const spriteHeightPx = 16
 const filename = '16'
 
 const labels = [
-  'grass debris shrub flower peak tree hill cave tower boulder stones',
+  'grass debris shrub flower peak tree stalk hill cave tower boulder stones grass1 grass2 grass3 grass4 debris1',
   'water1 water2 bloop1 bloop2 fire1 fire2 glob donut stone lightning1 lightning2 effectA1 effectA2 effectB1 effectB2 effectC1 effectC2 droplets1 droplets2 effectD1 effectD2 flame1 flame2',
   'wall rubble whirl1 whirl2 carpet1 carpet2 foundation bridge path path1 path2 path3 path4 door_closed door_open gate_closed gate_open stairs_up stairs_down statue crate1 crate2 tombstone',
   'man man_sword woman woman_sword demon boney_n spider ruffian snake mozzie crab flathead frogman nugget goober orb blob silverfish chicken frog wisp bat ghost',

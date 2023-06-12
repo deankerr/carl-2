@@ -21,7 +21,7 @@ export function createRenderSystem(app: Application, world: World<Entity>) {
       world.addComponent(entity, 'sprite', sprite)
       app.stage.addChild(sprite)
 
-      console.log('Create sprite for', entity.base)
+      // console.log('Create sprite for', entity.base)
     }
 
     // update sprites

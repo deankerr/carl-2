@@ -23,6 +23,8 @@ export type Entity = {
   solid?: true // blocks movement
 }
 
+export type EntityKey = keyof typeof entityTemplates
+
 export const entityTemplates = {
   player: {
     glyph: {
@@ -50,17 +52,34 @@ export const entityTemplates = {
       zIndex: 1
     }
   },
-  deadTree: {
+  tree: {
     glyph: {
       char: 'tree',
-      color: 'rgb(98, 58, 3)',
+      color: 'rgb(65, 122, 55)',
       bgColor: '',
       zIndex: 1
     }
   },
-  grass: {
+  deadTree: {
     glyph: {
-      char: 'grass',
+      char: 'tree',
+      color: 'rgb(151, 90, 5)',
+      bgColor: '',
+      zIndex: 1
+    }
+  },
+
+  shrub: {
+    glyph: {
+      char: 'shrub',
+      color: 'rgb(80, 151, 67)',
+      bgColor: '',
+      zIndex: 1
+    }
+  },
+  grass1: {
+    glyph: {
+      char: 'grass1',
       color: 'rgb(100, 111, 42)',
       bgColor: '',
       zIndex: 1
@@ -70,6 +89,87 @@ export const entityTemplates = {
     glyph: {
       char: 'debris',
       color: 'rgb(86, 67, 61)',
+      bgColor: '',
+      zIndex: 1
+    }
+  },
+  deadGrass2: {
+    glyph: {
+      char: 'debris1',
+      color: 'rgb(86, 67, 61)',
+      bgColor: '',
+      zIndex: 1
+    }
+  },
+
+  grass2: {
+    glyph: {
+      char: 'grass2',
+      color: 'rgb(100, 111, 42)',
+      bgColor: '',
+      zIndex: 1
+    }
+  },
+  grass3: {
+    glyph: {
+      char: 'grass3',
+      color: 'rgb(100, 111, 42)',
+      bgColor: '',
+      zIndex: 1
+    }
+  },
+  grass4: {
+    glyph: {
+      char: 'grass4',
+      color: 'rgb(100, 111, 42)',
+      bgColor: '',
+      zIndex: 1
+    }
+  },
+  flowerPurple: {
+    glyph: {
+      char: 'flower',
+      color: 'rgb(236, 126, 172)',
+      bgColor: '',
+      zIndex: 1
+    }
+  },
+  flowerYellow: {
+    glyph: {
+      char: 'flower',
+      color: 'rgb(221, 218, 56)',
+      bgColor: '',
+      zIndex: 1
+    }
+  },
+  flowersPurple1: {
+    glyph: {
+      char: 'bloop1',
+      color: 'rgb(236, 126, 172)',
+      bgColor: '',
+      zIndex: 1
+    }
+  },
+  flowersPurple2: {
+    glyph: {
+      char: 'bloop2',
+      color: 'rgb(236, 126, 172)',
+      bgColor: '',
+      zIndex: 1
+    }
+  },
+  flowersYellow1: {
+    glyph: {
+      char: 'bloop1',
+      color: 'rgb(221, 218, 56)',
+      bgColor: '',
+      zIndex: 1
+    }
+  },
+  flowersYellow2: {
+    glyph: {
+      char: 'bloop2',
+      color: 'rgb(221, 218, 56)',
       bgColor: '',
       zIndex: 1
     }
