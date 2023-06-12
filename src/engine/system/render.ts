@@ -48,10 +48,10 @@ export function createRenderSystem() {
       entity.sprite.position.set(x, y)
 
       if (shouldRenderSprite(viewport, entity.position)) {
-        entity.sprite.renderable = true
+        entity.sprite.visible = true
         spritesRendered++
       } else {
-        entity.sprite.renderable = false
+        entity.sprite.visible = false
       }
     }
 

@@ -1,8 +1,8 @@
 import { World } from 'miniplex'
 import { makeStore } from 'statery'
 
+import { app } from '@/.'
 import { config } from 'config'
-import { app } from '..'
 import { Entity, createEntityFactory } from './entity'
 import { createInput } from './input'
 import { createOutdoors } from './region'
@@ -39,7 +39,7 @@ export function createEngine() {
   }
   createInput(update)
 
-  const system: System[] = []
+  const systems: System[] = []
 
   const store = makeStore({
     viewport: {
@@ -57,12 +57,12 @@ export function createEngine() {
 
   const init = () => {
     // Systems
-    const render = createRenderSystem()
-    system.push(render)
+    const renderSystem = createRenderSystem()
+    systems.push(renderSystem)
 
     createOutdoors()
-    app.ticker.add(render)
+    app.ticker.add(renderSystem)
   }
 
-  return { world, createEntity, system, update, init, player, store }
+  return { init, createEntity, update, world, systems, player, store }
 }
