@@ -3,7 +3,7 @@ import { engine } from '../'
 import { Entity, EntityKey } from './entity'
 import { pick } from './util'
 
-const { gameWidth, gameHeight } = config
+const { viewportWidthCells, viewportHeightCells } = config
 
 export type Region = {
   entities: Entity[]
@@ -33,8 +33,8 @@ function spawnEachCellChance(keys: Partial<Record<EntityKey, number>>) {
     }
   }
 
-  for (let yi = 0; yi < gameHeight; yi++) {
-    for (let xi = 0; xi < gameWidth; xi++) {
+  for (let yi = 0; yi < viewportHeightCells; yi++) {
+    for (let xi = 0; xi < viewportWidthCells; xi++) {
       const key = pick(list)
       if (key !== 'nothing') engine.createEntity(key, xi, yi)
     }

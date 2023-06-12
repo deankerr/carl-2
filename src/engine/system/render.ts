@@ -20,8 +20,6 @@ export function createRenderSystem(app: Application, world: World<Entity>) {
 
       world.addComponent(entity, 'sprite', sprite)
       app.stage.addChild(sprite)
-
-      // console.log('Create sprite for', entity.base)
     }
 
     // update sprites
@@ -34,8 +32,8 @@ export function createRenderSystem(app: Application, world: World<Entity>) {
 }
 
 function calculateScreenPosition(position: { x: number; y: number }) {
-  const x = position.x * config.tileSize + Math.floor(config.paddingPx / 2)
-  const y = position.y * config.tileSize + Math.floor(config.paddingPx / 2)
+  const x = position.x * config.tileSizePx + Math.floor(config.paddingPx / 2)
+  const y = position.y * config.tileSizePx + Math.floor(config.paddingPx / 2)
 
   return { x, y }
 }

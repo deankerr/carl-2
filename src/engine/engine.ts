@@ -12,9 +12,9 @@ export function createEngine() {
 
   // PIXI
   const app = new Application<HTMLCanvasElement>({
-    width: config.appWidth,
-    height: config.appHeight,
-    backgroundColor: 'rgb(2, 5, 2)'
+    width: config.pixiAppWidth,
+    height: config.pixiAppHeight,
+    backgroundColor: 'rgb(2, 5, 2)',
   })
 
   app.stage.sortableChildren = true
@@ -26,17 +26,13 @@ export function createEngine() {
   const world = new World<Entity>()
   const createEntity = createEntityFactory(world)
 
+  // temp - needed before turn scheduler implemented
+  const player = createEntity('player', 30, 15)
+
   // Systems
   const render = createRenderSystem(app, world)
 
-  // temp create region
-  // createTestRegion(world, (x, y) => {
-  //   if (x > 15 && x < 35 && y > 6 && y < 18) createEntity('deadTree', x, y)
-  //   else createEntity('wall', x, y)
-  // })
-
-  const player = createEntity('player', 30, 15)
-
+  // Main update loop
   const update = (tempAction: string) => {
     console.log('update', tempAction)
     switch (tempAction) {
@@ -57,15 +53,11 @@ export function createEngine() {
 
   const init = () => {
     createOutdoors()
-
     app.ticker.add(render)
   }
 
   return { app, world, createEntity, render, update, init }
 }
-
-// export const engine = createEngine()
-// console.log('engine', engine)
 
 function resizeApp(app: Application<HTMLCanvasElement>) {
   const screenWidth = Math.max(
@@ -78,13 +70,13 @@ function resizeApp(app: Application<HTMLCanvasElement>) {
   )
 
   const scale = Math.min(
-    screenWidth / config.appWidth,
-    screenHeight / config.appHeight
+    screenWidth / config.pixiAppWidth,
+    screenHeight / config.pixiAppHeight
   )
 
   // adjusted values
-  const newWidth = Math.floor(scale * config.appWidth)
-  const newHeight = Math.floor(scale * config.appHeight)
+  const newWidth = Math.floor(scale * config.pixiAppWidth)
+  const newHeight = Math.floor(scale * config.pixiAppHeight)
 
   app.view.style.width = `${newWidth}px`
   app.view.style.height = `${newHeight}px`

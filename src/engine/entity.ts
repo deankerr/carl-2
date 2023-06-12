@@ -14,6 +14,7 @@ export type Entity = {
     x: number // grid reference
     y: number
   }
+
   sprite?: Sprite
 } & Partial<EntityFlags>
 
@@ -48,12 +49,12 @@ export function createEntityFactory(world: World<Entity>) {
       glyph: {
         char: typeof char === 'string' ? char : pick(char),
         color: typeof color === 'string' ? color : pick(color),
-        zIndex
+        zIndex,
       },
 
       position: { x, y },
 
-      ...flags
+      ...flags,
     }
 
     world.add(entity)

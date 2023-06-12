@@ -14,7 +14,6 @@ const bundleIds = manifest.bundles.map((bundle) => bundle.name)
 await Assets.loadBundle(bundleIds)
 console.log('assets loaded?')
 
-// engine.app.ticker.add(engine.render)
 engine.init()
 
 const container = document.getElementById('root') as HTMLDivElement

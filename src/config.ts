@@ -1,13 +1,13 @@
-const tileSize = 16
-const gameWidth = 59
-const gameHeight = 39
+const tileSizePx = 16
+const viewportWidthCells = 59
+const viewportHeightCells = 39
 const paddingPx = 8
 
 export const config = {
-  tileSize,
-  gameWidth,
-  gameHeight,
+  tileSizePx,
+  viewportWidthCells,
+  viewportHeightCells,
   paddingPx,
-  appWidth: gameWidth * tileSize + paddingPx,
-  appHeight: gameHeight * tileSize + paddingPx,
+  pixiAppWidth: viewportWidthCells * tileSizePx + paddingPx,
+  pixiAppHeight: viewportHeightCells * tileSizePx + paddingPx,
 }
