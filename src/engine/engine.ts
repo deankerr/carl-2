@@ -1,11 +1,14 @@
 import { World } from 'miniplex'
 import { Application } from 'pixi.js'
+import { makeStore } from 'statery'
 
 import { config } from 'config'
 import { Entity, createEntityFactory } from './entity'
 import { createInput } from './input'
 import { createOutdoors } from './region'
 import { createRenderSystem } from './system/render'
+
+type System = () => void
 
 export function createEngine() {
   console.log('create engine')
@@ -29,12 +32,9 @@ export function createEngine() {
   // temp - needed before turn scheduler implemented
   const player = createEntity('player', 30, 15)
 
-  // Systems
-  const render = createRenderSystem(app, world)
-
   // Main update loop
   const update = (tempAction: string) => {
-    console.log('update', tempAction)
+    // console.log('update', tempAction)
     switch (tempAction) {
       case 'pc left':
         player.position.x--
@@ -51,12 +51,28 @@ export function createEngine() {
   }
   createInput(update)
 
+  const system: System[] = []
+
+  const store = makeStore({
+   viewport: {
+    x: 0,
+    y: 0,
+    width: config.viewportWidthCells,
+    height: config.viewportHeightCells
+    },
+    testCurrentRegion: 'outdoors'
+  })
+
   const init = () => {
+    // Systems
+    const render = createRenderSystem()
+    system.push(render)
+
     createOutdoors()
     app.ticker.add(render)
   }
 
-  return { app, world, createEntity, render, update, init }
+  return { app, world, createEntity, system, update, init, player, store }
 }
 
 function resizeApp(app: Application<HTMLCanvasElement>) {

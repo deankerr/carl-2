@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef } from 'react'
 import { engine } from './'
+import { DebugInfo } from './ui/DebugInfo'
 
 type AppProps = {
   engine: typeof engine
@@ -7,9 +8,10 @@ type AppProps = {
 
 function App({ engine }: AppProps) {
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-800">
+    <div className="flex h-screen flex-col items-center justify-center bg-gray-800">
       {/* <div className="relative"> */}
       <PixiJS engine={engine} />
+      <DebugInfo engine={engine} />
       {/* </div> */}
     </div>
   )

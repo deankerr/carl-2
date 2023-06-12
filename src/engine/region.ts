@@ -3,7 +3,7 @@ import { config } from 'config'
 import { Entity, EntityKey } from './entity'
 import { pick } from './util'
 
-const { viewportWidthCells, viewportHeightCells } = config
+const { overworldWidth, overworldHeight } = config
 
 export type Region = {
   entities: Entity[]
@@ -33,8 +33,8 @@ function spawnEachCellChance(keys: Partial<Record<EntityKey, number>>) {
     }
   }
 
-  for (let yi = 0; yi < viewportHeightCells; yi++) {
-    for (let xi = 0; xi < viewportWidthCells; xi++) {
+  for (let yi = 0; yi < overworldHeight; yi++) {
+    for (let xi = 0; xi < overworldWidth; xi++) {
       const key = pick(list)
       if (key !== 'nothing') engine.createEntity(key, xi, yi)
     }
