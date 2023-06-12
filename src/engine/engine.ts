@@ -20,6 +20,9 @@ export function createEngine() {
     backgroundColor: 'rgb(2, 5, 2)',
   })
 
+  // PIXI.JS Firefox extension support
+  window.__PIXI_APP__ = app
+
   app.stage.sortableChildren = true
 
   window.addEventListener('resize', () => resizeApp(app))
@@ -91,9 +94,16 @@ function resizeApp(app: Application<HTMLCanvasElement>) {
   )
 
   // adjusted values
-  const newWidth = Math.floor(scale * config.pixiAppWidth)
-  const newHeight = Math.floor(scale * config.pixiAppHeight)
+  const margin = 48
+  const newWidth = Math.floor(scale * config.pixiAppWidth) - margin
+  const newHeight = Math.floor(scale * config.pixiAppHeight) - margin
 
   app.view.style.width = `${newWidth}px`
   app.view.style.height = `${newHeight}px`
+}
+
+declare global {
+  interface Window {
+    __PIXI_APP__: Application
+  }
 }

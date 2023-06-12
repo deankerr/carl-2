@@ -11,7 +11,7 @@ type RandomGlyph = {
 export const entityTemplates = {
   player: {
     char: '@',
-    color: 'rgb(140, 237, 39)',
+    color: 'rgb(238, 130, 238)',
     zIndex: 3,
     isPlayer: true,
   },

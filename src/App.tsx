@@ -5,10 +5,10 @@ import { DebugInfo } from './ui/DebugInfo'
 type AppProps = {
   engine: typeof engine
 }
-
+// bg-gray-800
 function App({ engine }: AppProps) {
   return (
-    <div className="flex h-screen flex-col items-center justify-center bg-gray-800">
+    <div className="flex h-screen flex-col items-center justify-center text-gray-400">
       {/* <div className="relative"> */}
       <PixiJS engine={engine} />
       <DebugInfo engine={engine} />
@@ -32,7 +32,7 @@ function PixiJS({ engine }: AppProps) {
     }
   }, [engine.app.view])
 
-  return <div ref={ref} />
+  return <div ref={ref} className="border-0 border-red-700" />
 }
 
 export default App

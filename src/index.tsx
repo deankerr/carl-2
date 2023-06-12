@@ -4,6 +4,7 @@ import { Assets } from 'pixi.js'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import 'tailwindcss/tailwind.css'
+import './index.css'
 import manifest from './public/assets/manifest.json'
 
 export const engine = createEngine()
