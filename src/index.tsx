@@ -3,7 +3,6 @@ import { createEngine } from 'engine/engine'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import 'tailwindcss/tailwind.css'
-import './index.css'
 
 import { createPIXIApp, loadAssetBundle } from './lib/pixi'
 

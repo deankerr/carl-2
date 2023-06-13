@@ -6,7 +6,6 @@ export function createPIXIApp() {
   const app = new Application<HTMLCanvasElement>({
     width: config.pixiAppWidth,
     height: config.pixiAppHeight,
-    backgroundColor: 'rgb(2, 5, 2)',
   })
 
   // PIXI.JS Firefox extension support

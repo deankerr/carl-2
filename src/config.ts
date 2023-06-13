@@ -14,4 +14,8 @@ export const config = {
   pixiAppHeight: viewportHeightCells * tileSizePx + paddingPx,
   overworldWidth: 100,
   overworldHeight: 100,
+  playerSpawnPosition: {
+    x: viewportWidthCells >> 1,
+    y: viewportHeightCells >> 1,
+  },
 }

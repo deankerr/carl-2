@@ -1,4 +1,5 @@
 import { app, engine } from '@/.'
+import { config } from '@/config'
 import { bind } from 'mousetrap'
 import { utils } from 'pixi.js'
 
@@ -10,6 +11,7 @@ export function createInput(update: (tempAction: string) => void) {
   bind('down', () => update('pc down'))
 
   bind('E', () => {
+    console.log('Config', config)
     console.log('Engine', engine)
     console.log('PIXI', app)
     console.log('BaseTextureCache', utils.BaseTextureCache)

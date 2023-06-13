@@ -10,6 +10,8 @@ import { createSpriteSystem } from './system/spriteSystem'
 
 type System = () => void
 
+const { playerSpawnPosition: pc } = config
+
 export function createEngine() {
   console.log('create engine')
 
@@ -18,7 +20,7 @@ export function createEngine() {
   const createEntity = createEntityFactory(world)
 
   // temp - needed before turn scheduler implemented
-  const player = createEntity('player', 30, 30)
+  const player = createEntity('player', pc.x, pc.y)
 
   // Main update loop
   const update = (tempAction: string) => {
