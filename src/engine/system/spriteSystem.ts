@@ -2,6 +2,7 @@ import { app, engine } from '@/.'
 import { config } from 'config'
 import { AnimatedSprite, Container, Sprite, Texture } from 'pixi.js'
 import { Entity } from '../entity'
+import { pick } from '../util'
 
 type Viewport = typeof engine.store.state.viewport
 type Position = { x: number; y: number }
@@ -10,8 +11,8 @@ export function createSpriteSystem() {
   const { world, player, store } = engine
 
   // queries
-  const spritelessEntities = world.with('position', 'glyph').without('_sprite')
-  const spriteEntities = world.with('position', 'glyph', '_sprite')
+  const spritelessEntities = world.with('position').without('_sprite')
+  const spriteEntities = world.with('position', '_sprite')
 
   return () => {
     // update viewport location // ? move to end, set in one go?
@@ -28,36 +29,74 @@ export function createSpriteSystem() {
     // create sprite for new entities
     let spritesCreated = 0
     for (const entity of spritelessEntities) {
+      // For the sprite, tint and background tint sprite, pick a random sprite if
+      // necessary and apply the selections to the entity as components
+      let spriteID = ''
+      let tint = ''
+      let bgTint = '' // optional
+
+      // ? move this gnarly component adding logic to Entity factory
+      if (!entity.sprite) {
+        if (Array.isArray(entity.base.sprite)) {
+          spriteID = pick(entity.base.sprite)
+          world.addComponent(entity, 'sprite', spriteID)
+        } else {
+          spriteID = entity.base.sprite
+        }
+      }
+
+      if (!entity.tint) {
+        if (Array.isArray(entity.base.tint)) {
+          tint = pick(entity.base.tint)
+          world.addComponent(entity, 'tint', tint)
+        } else {
+          tint = entity.base.tint
+        }
+      }
+
+      if (!entity.bgTint) {
+        if ('bgTint' in entity.base) {
+          if (Array.isArray(entity.base.bgTint)) {
+            bgTint = pick(entity.base.bgTint)
+            world.addComponent(entity, 'bgTint', bgTint)
+          } else {
+            bgTint = entity.base.bgTint
+          }
+        }
+      }
+
       const container = new Container()
 
-      const background: Sprite | undefined = undefined
-
-      if (entity.glyph.bgColor) {
-        const background = Sprite.from(Texture.WHITE)
-        background.tint = entity.glyph.bgColor
-
+      let background: Sprite | undefined
+      if (bgTint) {
+        background = Sprite.from(Texture.WHITE)
+        background.tint = bgTint
         container.addChild(background)
       }
 
       let foreground: Sprite | AnimatedSprite
 
-      if (entity.animatedSprite && Array.isArray(entity.base.char)) {
-        const texture = entity.base.char.map((char) => Texture.from(char))
+      if ('animate' in entity.base && Array.isArray(entity.base.sprite)) {
+        // create animated sprite
+        const textures = entity.base.sprite.map((sprite) =>
+          Texture.from(sprite)
+        )
 
-        const animatedSprite = new AnimatedSprite(texture)
-        animatedSprite.animationSpeed = 0.0125
-        animatedSprite.play()
+        const sprite = new AnimatedSprite(textures)
+        sprite.animationSpeed = (1 / 60 / 1000) * entity.base.animate
+        sprite.play()
 
-        foreground = animatedSprite
+        foreground = sprite
       } else {
-        foreground = Sprite.from(entity.glyph.char)
+        // regular sprite
+        foreground = Sprite.from(spriteID)
       }
-      foreground.tint = entity.glyph.color
+      foreground.tint = tint
       container.addChild(foreground)
 
       const { x, y } = calculateScreenPosition(viewport, entity.position)
       container.position.set(x, y)
-      container.zIndex = entity.glyph.zIndex
+      container.zIndex = 'zIndex' in entity.base ? entity.base.zIndex : 1
 
       app.stage.addChild(container)
 

@@ -12,7 +12,7 @@ export type Region = {
 export function createOutdoors() {
   spawnEachCellChance({
     grass: 20,
-    nothing: 3,
+    // nothing: 3,
     deadGrass: 5,
     shrub: 1,
     plant: 1,
@@ -48,7 +48,7 @@ function spawnEachCellChance(keys: Partial<Record<EntityKey, number>>) {
   for (let yi = 0; yi < overworldHeight; yi++) {
     for (let xi = 0; xi < overworldWidth; xi++) {
       const key = pick(list)
-      if (key !== 'nothing') engine.createEntity(key, xi, yi)
+      engine.createEntity(key, xi, yi)
     }
   }
 }

@@ -1,15 +1,17 @@
 import { World } from 'miniplex'
 import { AnimatedSprite, Container, Sprite } from 'pixi.js'
 import { entityTemplates } from './templates'
-import { pick } from './util'
 
 // TODO cleanup types
 
 export type Entity = {
   id: number // ?
-  base: (typeof entityTemplates)[keyof typeof entityTemplates]
+  base: EntityTemplate
 
-  glyph: EntityGlyph
+  // base sprite overrides
+  sprite?: string
+  tint?: string
+  bgTint?: string
 
   // Components
   position: {
@@ -22,57 +24,46 @@ export type Entity = {
     background?: Sprite | AnimatedSprite
     foreground: Sprite | AnimatedSprite
   }
-} & Partial<EntityFlags>
+} & Partial<Record<Tag, true>>
 
-export type EntityGlyph = {
-  char: string // ? keyof spritesheet ids
-  color: string // ? future HSL Color object
-  bgColor?: string // ? ^
-  zIndex: number //? replace with entity catagories + pixi containers
-}
+export type Tag = 'isPlayer' | 'solid'
 
-export type EntityFlags = {
-  isPlayer?: true
-  solid?: true // blocks movement
-  animatedSprite?: true
-}
-
-export type EntityKey = keyof typeof entityTemplates | 'nothing'
+export type EntityKey = keyof typeof entityTemplates
+type EntityTemplate = (typeof entityTemplates)[EntityKey]
 
 export function createEntityFactory(world: World<Entity>) {
   let entityCount = 0 // TODO move to state
 
-  const create = (
-    key: keyof typeof entityTemplates,
-    x: number,
-    y: number
-  ): Entity => {
-    const template = { bgColor: undefined, ...entityTemplates[key] } // ! stupid bad hack FIXME
+  const create = (key: EntityKey, x: number, y: number): Entity => {
+    const template = entityTemplates[key]
 
-    const { char, color, zIndex, bgColor, ...flags } = template
+    if ('animate' in template) {
+      //
+    }
 
-    const entity: Entity = {
+    const entity = {
       id: entityCount++,
       base: entityTemplates[key],
 
-      glyph: {
-        char: typeof char === 'string' ? char : pick(char),
-        color: typeof color === 'string' ? color : pick(color),
-        zIndex,
-      },
-
       position: { x, y },
-
-      ...flags,
+      ...createTags(template),
     }
-
-    if (bgColor)
-      entity.glyph.bgColor =
-        typeof bgColor === 'string' ? bgColor : pick(bgColor)
 
     world.add(entity)
     return entity
   }
 
   return create
+}
+
+function createTags(template: EntityTemplate) {
+  if (!('tags' in template)) return {}
+
+  const tags: Partial<Record<Tag, true>> = {}
+
+  for (const tag of template.tags) {
+    tags[tag] = true
+  }
+
+  return tags
 }

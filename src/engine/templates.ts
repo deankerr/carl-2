@@ -1,59 +1,59 @@
-import { EntityFlags } from './entity'
+import { Tag } from './entity'
 
-type Template = RandomGlyph & Partial<EntityFlags>
-
-type RandomGlyph = {
-  char: string | string[]
-  color: string | string[]
-  bgColor?: string | string[]
-  zIndex: number
+type Template = {
+  sprite: string | string[]
+  tint: string | string[]
+  bgTint?: string | string[]
+  zIndex?: number
+  animate?: number
+  tags?: Tag[]
 }
 
-export const entityTemplates = {
+const beings = {
   player: {
-    char: '@',
-    color: 'rgb(238, 130, 238)',
+    sprite: '@',
+    tint: '#ee82ee',
     zIndex: 3,
-    isPlayer: true,
+    tags: ['isPlayer'],
   },
+} satisfies Record<string, Template>
+
+const structure = {
   wall: {
-    char: 'wall',
-    color: 'rgb(118, 118, 118)',
-    zIndex: 1,
-    solid: true,
+    sprite: 'wall',
+    tint: '#767676',
+    tags: ['solid'],
   },
+
   path: {
-    char: 'path',
-    color: 'rgb(38, 38, 38)',
-    zIndex: 1,
+    sprite: 'path',
+    tint: '#262626',
   },
-  dust: {
-    char: 'debris',
-    color: 'rgb(94, 87, 83)',
-    zIndex: 1,
-  },
+} satisfies Record<string, Template>
+
+const flora = {
   tree: {
-    char: 'tree',
-    color: 'rgb(65, 122, 55)',
-    zIndex: 1,
+    sprite: 'tree',
+    tint: '#417a37',
   },
+
   deadTree: {
-    char: 'tree',
-    color: 'rgb(151, 90, 5)',
-    zIndex: 1,
+    sprite: 'tree',
+    tint: '#975a05',
   },
+
   shrub: {
-    char: 'shrub',
-    color: 'rgb(80, 151, 67)',
-    zIndex: 1,
+    sprite: 'shrub',
+    tint: '#509743',
   },
+
   plant: {
-    char: 'plant',
-    color: 'rgb(98, 195, 74)',
-    zIndex: 1,
+    sprite: 'plant',
+    tint: '#62c34a',
   },
+
   flowers: {
-    char: [
+    sprite: [
       'flower_1',
       'flower_2',
       'flower_3',
@@ -63,21 +63,16 @@ export const entityTemplates = {
       'flower_7',
       'flower_8',
     ],
-    color: [
-      'rgb(236, 126, 172)',
-      'rgb(221, 218, 56)',
-      'rgb(44, 166, 188)',
-      'rgb(221, 72, 56)',
-    ],
-    zIndex: 1,
+    tint: ['#ec7eac', '#ddda38', '#2ca6bc', '#dd4838'],
   },
+
   mushroom: {
-    char: ['mushroom_1', 'mushroom_2', 'mushroom_3', 'mushroom_4'],
-    color: ['rgb(151, 90, 5)', 'rgb(138, 40, 29)'],
-    zIndex: 1,
+    sprite: ['mushroom_1', 'mushroom_2', 'mushroom_3', 'mushroom_4'],
+    tint: ['#975a05', '#8a281d'],
   },
+
   grass: {
-    char: [
+    sprite: [
       'grass_a1',
       'grass_a2',
       'grass_a3',
@@ -87,11 +82,11 @@ export const entityTemplates = {
       'grass_a7',
       'grass_a8',
     ],
-    color: 'rgb(100, 111, 42)',
-    zIndex: 1,
+    tint: '#646f2a',
   },
+
   deadGrass: {
-    char: [
+    sprite: [
       'grass_b1',
       'grass_b2',
       'grass_b3',
@@ -101,16 +96,23 @@ export const entityTemplates = {
       'grass_b7',
       'grass_b8',
     ],
-    color: ['rgb(86, 67, 61)'],
-    zIndex: 1,
+    tint: ['#56433d'],
   },
+} satisfies Record<string, Template>
+
+const mineral = {
+  dust: {
+    sprite: 'debris',
+    tint: '#5e5753',
+  },
+
   boulder: {
-    char: ['boulder'],
-    color: ['rgb(94, 87, 83)'],
-    zIndex: 1,
+    sprite: ['boulder'],
+    tint: ['#5e5753'],
   },
+
   rocks: {
-    char: [
+    sprite: [
       'rocks_1',
       'rocks_2',
       'rocks_3',
@@ -120,29 +122,29 @@ export const entityTemplates = {
       'rocks_7',
       'rocks_8',
     ],
-    color: ['rgb(104, 90, 81)'],
-    zIndex: 1,
+    tint: ['#685a51'],
   },
+
   hill: {
-    char: ['hill'],
-    color: ['rgb(69, 60, 55)'],
-    zIndex: 1,
-  },
-  water: {
-    char: ['water_1', 'water_2'],
-    color: ['rgb(54, 107, 166)'],
-    bgColor: ['rgb(42, 85, 134)'],
-    zIndex: 2, // ! temp
-    animatedSprite: true,
+    sprite: 'hill',
+    tint: '#453c37',
   },
 } satisfies Record<string, Template>
 
-/*
+const liquid = {
+  water: {
+    sprite: ['water_1', 'water_2'],
+    tint: '#366ba6',
+    bgTint: '#2a5586',
+    zIndex: 2, // ! temp
+    animate: 1000,
+  },
+} satisfies Record<string, Template>
 
-entity: {
-  char: ['entity'],
-  color: ['color'],
-  zIndex: 1,
-},
-
-*/
+export const entityTemplates = {
+  ...beings,
+  ...structure,
+  ...flora,
+  ...mineral,
+  ...liquid,
+} satisfies Record<string, Template>
