@@ -13,8 +13,6 @@ type System = () => void
 const { playerSpawnPosition: pc } = config
 
 export function createEngine() {
-  console.log('create engine')
-
   // Entities
   const world = new World<Entity>()
   const createEntity = createEntityFactory(world)

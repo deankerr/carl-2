@@ -1,7 +1,7 @@
 import { engine } from '@/.'
 import { config } from 'config'
 import { Entity, EntityKey } from './entity'
-import { pick } from './util'
+import { rng } from '@/lib/rng'
 
 const { overworldWidth, overworldHeight } = config
 
@@ -59,7 +59,7 @@ function spawnEachCellChance(keys: Partial<Record<EntityKey, number>>) {
 
   for (let yi = 0; yi < overworldHeight; yi++) {
     for (let xi = 0; xi < overworldWidth; xi++) {
-      const key = pick(list)
+      const key = rng.pick(list)
       engine.createEntity(key, xi, yi)
     }
   }

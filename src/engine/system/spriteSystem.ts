@@ -2,7 +2,7 @@ import { app, engine } from '@/.'
 import { config } from 'config'
 import { AnimatedSprite, Container, Sprite, Texture } from 'pixi.js'
 import { Entity } from '../entity'
-import { pick } from '../util'
+import { rng } from '@/lib/rng'
 
 type Viewport = typeof engine.store.state.viewport
 type Position = { x: number; y: number }
@@ -38,7 +38,7 @@ export function createSpriteSystem() {
       // ? move this gnarly component adding logic to Entity factory
       if (!entity.sprite) {
         if (Array.isArray(entity.base.sprite)) {
-          spriteID = pick(entity.base.sprite)
+          spriteID = rng.pick(entity.base.sprite)
           world.addComponent(entity, 'sprite', spriteID)
         } else {
           spriteID = entity.base.sprite
@@ -47,7 +47,7 @@ export function createSpriteSystem() {
 
       if (!entity.tint) {
         if (Array.isArray(entity.base.tint)) {
-          tint = pick(entity.base.tint)
+          tint = rng.pick(entity.base.tint)
           world.addComponent(entity, 'tint', tint)
         } else {
           tint = entity.base.tint
@@ -57,7 +57,7 @@ export function createSpriteSystem() {
       if (!entity.bgTint) {
         if ('bgTint' in entity.base) {
           if (Array.isArray(entity.base.bgTint)) {
-            bgTint = pick(entity.base.bgTint)
+            bgTint = rng.pick(entity.base.bgTint)
             world.addComponent(entity, 'bgTint', bgTint)
           } else {
             bgTint = entity.base.bgTint

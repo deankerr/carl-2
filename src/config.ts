@@ -6,14 +6,21 @@ const viewportHeightCells = 23
 const paddingPx = 0
 
 export const config = {
+  seed: 'tommy',
+
   tileSizePx,
+
   viewportWidthCells,
   viewportHeightCells,
+
   paddingPx,
+
   pixiAppWidth: viewportWidthCells * tileSizePx + paddingPx,
   pixiAppHeight: viewportHeightCells * tileSizePx + paddingPx,
+
   overworldWidth: 100,
   overworldHeight: 100,
+
   playerSpawnPosition: {
     x: viewportWidthCells >> 1,
     y: viewportHeightCells >> 1,
