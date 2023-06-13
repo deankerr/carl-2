@@ -21,13 +21,10 @@ function PixiJS() {
   const ref = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {
-    console.log('<PixiJS> create')
-
     const div = ref.current
     if (div) div.appendChild(app.view)
 
     return () => {
-      console.log('<PixiJS> destroy')
       if (div) div.removeChild(app.view)
     }
   }, [])

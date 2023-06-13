@@ -24,17 +24,29 @@ export function createOutdoors() {
     mushroom: 1,
   })
 
-  const lake = { x: 35, y: 10, x2: 55, y2: 20 }
+  createLake('waterA', 9, 9, 8, 8)
+  createLake('waterA', 11, 11, 8, 8)
 
-  for (let yi = lake.y; yi < lake.y2; yi++) {
-    for (let xi = lake.x; xi < lake.x2; xi++) {
-      engine.createEntity('water', xi, yi)
-    }
-  }
+  createLake('waterC', 40, 30, 8, 8)
+  createLake('waterC', 42, 32, 8, 8)
 }
 
 export function createOcean() {
-  spawnEachCellChance({ water: 1 })
+  spawnEachCellChance({ waterA: 1 })
+}
+
+function createLake(
+  key: EntityKey,
+  x: number,
+  y: number,
+  w: number,
+  h: number
+) {
+  for (let yi = y; yi < y + h; yi++) {
+    for (let xi = x; xi < x + w; xi++) {
+      engine.createEntity(key, xi, yi)
+    }
+  }
 }
 
 function spawnEachCellChance(keys: Partial<Record<EntityKey, number>>) {

@@ -18,7 +18,7 @@ export function createEngine() {
   const createEntity = createEntityFactory(world)
 
   // temp - needed before turn scheduler implemented
-  const player = createEntity('player', 30, 15)
+  const player = createEntity('player', 30, 30)
 
   // Main update loop
   const update = (tempAction: string) => {

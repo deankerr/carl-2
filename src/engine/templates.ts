@@ -131,11 +131,35 @@ const mineral = {
   },
 } satisfies Record<string, Template>
 
+const c_waterLight = '#285f9d'
+const c_waterDark = '#1d4a7d'
+
 const liquid = {
-  water: {
-    sprite: ['water_1', 'water_2'],
-    tint: '#366ba6',
-    bgTint: '#2a5586',
+  waterA: {
+    sprite: ['water_A1', 'water_A2'],
+    tint: c_waterLight,
+    bgTint: c_waterDark,
+    zIndex: 2, // ! temp
+    animate: 1000,
+  },
+  waterB: {
+    sprite: ['water_B1', 'water_B2'],
+    tint: c_waterLight,
+    bgTint: c_waterDark,
+    zIndex: 2, // ! temp
+    animate: 1000,
+  },
+  waterC: {
+    sprite: ['water_C1', 'water_C2'],
+    tint: c_waterLight,
+    bgTint: c_waterDark,
+    zIndex: 2, // ! temp
+    animate: 1000,
+  },
+  waterD: {
+    sprite: ['water_D1', 'water_D2'],
+    tint: c_waterLight,
+    bgTint: c_waterDark,
     zIndex: 2, // ! temp
     animate: 1000,
   },

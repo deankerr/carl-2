@@ -11,7 +11,8 @@ export function DebugInfo({ engine }: Props) {
   return (
     <div className="border-0 border-red-700">
       FPS: {stats.fps} Entities: {engine.world.size} Viewport: [{viewport.x},{' '}
-      {viewport.y}] Sprites: {stats.spritesRendered}/{stats.spritesTotal}
+      {viewport.y}] Sprites: {stats.spritesRendered}/{stats.spritesTotal}{' '}
+      Player: [{engine.player.position.x}, {engine.player.position.y}]
     </div>
   )
 }
