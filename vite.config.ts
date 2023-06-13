@@ -3,18 +3,18 @@ import path from 'path'
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
-// https://vitejs.dev/config https://vitest.dev/config
+// https://vitejs.dev/config
 export default defineConfig({
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src')
-    }
+      '@': path.resolve(__dirname, 'src'),
+    },
   },
   plugins: [react(), tsconfigPaths()],
   test: {
     globals: true,
     environment: 'happy-dom',
     setupFiles: '.vitest/setup',
-    include: ['**/test.{ts,tsx}']
-  }
+    include: ['**/test.{ts,tsx}'],
+  },
 })

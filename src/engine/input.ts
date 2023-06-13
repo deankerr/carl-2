@@ -1,5 +1,6 @@
 import { bind } from 'mousetrap'
-import { logEngineInfo } from '@/lib/util'
+// import { logEngineInfo } from '@/lib/util'
+import { logEngineInfo } from '../lib/util'
 
 export function createInput(update: (tempAction: string) => void) {
   // player controls

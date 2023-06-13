@@ -1,8 +1,7 @@
 import { World } from 'miniplex'
 import { makeStore } from 'statery'
 
-import { app } from '@/.'
-import { config } from 'config'
+import { app, config } from '@/.'
 import { Entity, createEntityFactory } from './entity'
 import { createInput } from './input'
 import { createOutdoors } from './region'

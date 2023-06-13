@@ -1,7 +1,8 @@
-import { engine } from '@/.'
-import { config } from 'config'
+// import { engine } from '@/.'
+import { engine, config } from '../'
+// import {  } from 'config'
 import { Entity, EntityKey } from './entity'
-import { rng } from '@/lib/rng'
+import { rng } from '../lib/rng'
 
 const { overworldWidth, overworldHeight } = config
 

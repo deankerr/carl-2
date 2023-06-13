@@ -1,5 +1,4 @@
-import { app, engine } from '@/.'
-import { config } from 'config'
+import { app, engine, config } from '@/.'
 import { AnimatedSprite, Container, Sprite, Texture } from 'pixi.js'
 import { Entity } from '../entity'
 import { rng } from '@/lib/rng'
@@ -56,12 +55,16 @@ export function createSpriteSystem() {
 
       if (!entity.bgTint) {
         if ('bgTint' in entity.base) {
-          if (Array.isArray(entity.base.bgTint)) {
-            bgTint = rng.pick(entity.base.bgTint)
-            world.addComponent(entity, 'bgTint', bgTint)
-          } else {
-            bgTint = entity.base.bgTint
-          }
+          // type issue, bgTint can't be an array yet
+          // TODO fix in refactor
+
+          // if (Array.isArray(entity.base.bgTint)) {
+          //   bgTint = rng.pick(entity.base.bgTint)
+          //   world.addComponent(entity, 'bgTint', bgTint)
+          // } else {
+          //   bgTint = entity.base.bgTint
+          // }
+          bgTint = entity.base.bgTint
         }
       }
 

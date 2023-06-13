@@ -1,9 +1,9 @@
 import 'tailwindcss/tailwind.css'
-import App from 'App'
-import { createEngine } from 'engine/engine'
+import App from './App'
+import { createEngine } from './engine/engine'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-export { config } from 'config'
+export { config } from './config'
 
 import { createPIXIApp, loadAssetBundle } from './lib/pixi'
 
