@@ -1,4 +1,4 @@
-import { app, engine } from '@/.'
+import { app, engine, config } from '@/.'
 import { useLayoutEffect, useRef } from 'react'
 import { DebugInfo } from './ui/DebugInfo'
 
@@ -11,7 +11,7 @@ function App({ engine }: AppProps) {
     <div className="flex h-screen flex-col items-center justify-center text-gray-400">
       {/* <div className="relative"> */}
       <PixiJS />
-      <DebugInfo engine={engine} />
+      {config.showDebugUI && <DebugInfo engine={engine} />}
       {/* </div> */}
     </div>
   )

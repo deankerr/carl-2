@@ -39,7 +39,7 @@ export function createFilterSystem() {
   active.push(reflection)
   active.push(crt)
 
-  app.stage.filters = config.enableFilters ? active : []
+  app.stage.filters = config.enableDemoFilters ? active : []
 
   return (dt: number) => {
     godrays.time += dt / 100
