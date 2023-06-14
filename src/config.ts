@@ -25,4 +25,6 @@ export const config = {
     x: viewportWidthCells >> 1,
     y: viewportHeightCells >> 1,
   },
+
+  enableFilters: true,
 }

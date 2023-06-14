@@ -6,8 +6,9 @@ import { Entity, createEntityFactory } from './entity'
 import { createInput } from './input'
 import { createOutdoors } from './region'
 import { createSpriteSystem } from './system/spriteSystem'
+import { createFilterSystem } from './system/filterSystem'
 
-type System = () => void
+type System = (dt: number) => void
 
 const { playerSpawnPosition: pc } = config
 
@@ -38,8 +39,6 @@ export function createEngine() {
   }
   createInput(update)
 
-  const systems: System[] = []
-
   const store = makeStore({
     viewport: {
       x: 0,
@@ -54,17 +53,22 @@ export function createEngine() {
     },
   })
 
+  const systems: System[] = []
+
   const init = () => {
     // Systems
-    // systems.push(renderSystem)
-    const renderSystem = createSpriteSystem()
-    const t = performance.now()
-    renderSystem()
-    console.log('Initial render:', performance.now() - t)
-    app.ticker.add(renderSystem)
+    systems.push(createSpriteSystem())
+    systems.push(createFilterSystem())
 
+    // Overworld
     createOutdoors()
-    // createOcean()
+  }
+
+  // Systems loop
+  const run = (dt: number) => {
+    for (const system of systems) {
+      system(dt)
+    }
   }
 
   // FPS counter
@@ -77,5 +81,5 @@ export function createEngine() {
     }))
   }, 250)
 
-  return { init, createEntity, update, world, systems, player, store }
+  return { init, createEntity, update, run, world, systems, player, store }
 }

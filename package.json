@@ -21,6 +21,7 @@
   "dependencies": {
     "miniplex": "2.0.0-next.20",
     "mousetrap": "^1.6.5",
+    "pixi-filters": "^5.2.1",
     "pixi.js": "^7.2.4",
     "random": "^4.1.0",
     "react": "^18.2.0",
