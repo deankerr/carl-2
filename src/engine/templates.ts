@@ -64,7 +64,7 @@ const flora = {
       'flower_7',
       'flower_8',
     ],
-    tint: ['#ec7eac', '#ddda38', '#2ca6bc', '#dd4838'],
+    tint: pallette.flowers2,
   },
 
   mushroom: {
@@ -132,8 +132,10 @@ const mineral = {
   },
 } satisfies Record<string, Template>
 
+// const c_waterLight = '#285f9d'
+// const c_waterDark = '#1d4a7d'
 const c_waterLight = '#285f9d'
-const c_waterDark = '#1d4a7d'
+const c_waterDark = '#132e4e'
 
 const liquid = {
   waterA: {
