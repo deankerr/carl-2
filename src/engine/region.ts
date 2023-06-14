@@ -1,8 +1,6 @@
-// import { engine } from '@/.'
-import { engine, config } from '../'
-// import {  } from 'config'
+import { engine, config } from '@/.'
 import { Entity, EntityKey } from './entity'
-import { rng } from '../lib/rng'
+import { rng } from '@/lib/rng'
 
 const { overworldWidth, overworldHeight } = config
 
@@ -25,11 +23,11 @@ export function createOutdoors() {
     mushroom: 1,
   })
 
-  createLake('waterA', 9, 9, 8, 8)
-  createLake('waterA', 11, 11, 8, 8)
+  createLake('waterA', 9, 10, 5, 5)
+  createLake('waterA', 11, 11, 5, 5)
 
-  createLake('waterC', 40, 30, 8, 8)
-  createLake('waterC', 42, 32, 8, 8)
+  createLake('waterC', 40, 31, 5, 5)
+  createLake('waterC', 42, 32, 5, 5)
 }
 
 export function createOcean() {

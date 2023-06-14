@@ -1,3 +1,4 @@
+import { pallette } from '@/lib/color'
 import { Tag } from './entity'
 
 type Template = {
@@ -82,7 +83,7 @@ const flora = {
       'grass_a7',
       'grass_a8',
     ],
-    tint: '#646f2a',
+    tint: pallette.forestPalette3,
   },
 
   deadGrass: {

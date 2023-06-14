@@ -1,8 +1,8 @@
 const tileSizePx = 16
-// const viewportWidthCells = 59
-const viewportWidthCells = 39
-// const viewportHeightCells = 39
-const viewportHeightCells = 23
+const viewportWidthCells = 59
+const viewportHeightCells = 39
+// const viewportWidthCells = 39
+// const viewportHeightCells = 23
 const paddingPx = 0
 
 export const config = {
