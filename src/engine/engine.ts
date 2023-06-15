@@ -13,6 +13,7 @@ type System = (dt: number) => void
 const { playerSpawnPosition: pc } = config
 
 export function createEngine() {
+  console.log('create engine')
   // Entities
   const world = new World<Entity>()
   const createEntity = createEntityFactory(world)
@@ -56,6 +57,7 @@ export function createEngine() {
   const systems: System[] = []
 
   const init = () => {
+    console.log('init')
     // Systems
     systems.push(createSpriteSystem())
     systems.push(createFilterSystem())
