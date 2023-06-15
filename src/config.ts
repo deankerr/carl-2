@@ -6,7 +6,7 @@ const paddingPx = 0
 export const config = {
   seed: 'tommy',
   enableDemoFilters: false,
-  showDebugUI: false,
+  showDebugUI: true,
   playerSpawnPosition: {
     x: viewportWidthCells >> 1,
     y: viewportHeightCells >> 1,

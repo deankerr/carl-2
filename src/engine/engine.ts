@@ -1,9 +1,9 @@
 import { World } from 'miniplex'
-import { makeStore } from 'statery'
 
 import { Entity, createEntityFactory } from './entity'
 import { bindInput } from './input'
 import { createOutdoors } from './region'
+import { store } from './store'
 import { createFilterSystem } from './system/filterSystem'
 import { createSpriteSystem } from './system/spriteSystem'
 import { app, config } from '@/.'
@@ -38,20 +38,6 @@ export function createEngine() {
   }
   bindInput(update)
 
-  const store = makeStore({
-    viewport: {
-      x: 0,
-      y: 0,
-      width: config.viewportWidthCells,
-      height: config.viewportHeightCells,
-    },
-    stats: {
-      fps: 0,
-      spritesTotal: 0,
-      spritesRendered: 0,
-    },
-  })
-
   const init = () => {
     console.log('init')
     // Systems
@@ -78,5 +64,5 @@ export function createEngine() {
     }, 250)
   }
 
-  return { init, createEntity, world, player, store }
+  return { init, createEntity, world, player }
 }

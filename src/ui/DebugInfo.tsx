@@ -1,13 +1,14 @@
 import { useStore } from 'statery'
 
 import { engine } from '@/.'
+import { store } from '@/engine/store'
 
 type Props = {
   engine: typeof engine
 }
 
 export function DebugInfo({ engine }: Props) {
-  const { viewport, stats } = useStore(engine.store)
+  const { viewport, stats } = useStore(store)
 
   return (
     <div className="border-0 border-red-700">
