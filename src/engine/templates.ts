@@ -84,6 +84,7 @@ const flora = {
       'grass_b8',
     ],
     tint: pallette.grassAlive,
+    tags: ['isGrass'],
   },
 
   deadGrass: {

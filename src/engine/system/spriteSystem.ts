@@ -18,9 +18,14 @@ export function createSpriteSystem() {
     // update viewport location
     const viewport = { ...store.state.viewport }
     const anchor = player ? player.position : { x: 0, y: 0 }
-
     viewport.x = anchor.x - Math.floor(viewport.width / 2)
     viewport.y = anchor.y - Math.floor(viewport.height / 2)
+
+    // ! testing
+    const grassContainer = new Container()
+    const othersContainer = new Container()
+    const beingsContainer = new Container()
+    app.stage.addChild(grassContainer, othersContainer, beingsContainer)
 
     // create sprite for new entities
     let spritesCreated = 0
@@ -98,7 +103,11 @@ export function createSpriteSystem() {
       container.position.set(x, y)
       container.zIndex = 'zIndex' in entity.base ? entity.base.zIndex : 1
 
-      app.stage.addChild(container)
+      // ! testing
+      // app.stage.addChild(container)
+      if (entity.isGrass) grassContainer.addChild(container)
+      else if (entity.isPlayer) beingsContainer.addChild(container)
+      else othersContainer.addChild(container)
 
       const _sprite: Entity['_sprite'] = { container, foreground }
       if (background) _sprite.background = background

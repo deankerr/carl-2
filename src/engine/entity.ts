@@ -25,7 +25,7 @@ export type Entity = {
   }
 } & Partial<Record<Tag, true>>
 
-export type Tag = 'isPlayer' | 'solid'
+export type Tag = 'isPlayer' | 'solid' | 'isGrass'
 
 export type EntityKey = keyof typeof entityTemplates
 type EntityTemplate = (typeof entityTemplates)[EntityKey]

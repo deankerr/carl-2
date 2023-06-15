@@ -23,24 +23,18 @@ export function createOutdoors() {
     mushroom: 1,
   })
 
-  createLake('waterA', 9, 10, 5, 5)
-  createLake('waterA', 11, 11, 5, 5)
+  rectangle('waterA', 9, 10, 5, 5)
+  rectangle('waterA', 11, 11, 5, 5)
 
-  createLake('waterC', 40, 31, 5, 5)
-  createLake('waterC', 42, 32, 5, 5)
+  rectangle('waterC', 40, 31, 5, 5)
+  rectangle('waterC', 42, 32, 5, 5)
 }
 
 export function createOcean() {
   spawnEachCellChance({ waterA: 1 })
 }
 
-function createLake(
-  key: EntityKey,
-  x: number,
-  y: number,
-  w: number,
-  h: number
-) {
+function rectangle(key: EntityKey, x: number, y: number, w: number, h: number) {
   for (let yi = y; yi < y + h; yi++) {
     for (let xi = x; xi < x + w; xi++) {
       create(key, xi, yi)
@@ -48,8 +42,10 @@ function createLake(
   }
 }
 
-function spawnEachCellChance(keys: Partial<Record<EntityKey, number>>) {
-  const list: EntityKey[] = []
+function spawnEachCellChance(
+  keys: Partial<Record<EntityKey | 'nothing', number>>
+) {
+  const list: (EntityKey | 'nothing')[] = []
   for (const [value, amount] of Object.entries(keys)) {
     for (let i = 0; i < amount; i++) {
       list.push(value as EntityKey)
@@ -59,7 +55,10 @@ function spawnEachCellChance(keys: Partial<Record<EntityKey, number>>) {
   for (let yi = 0; yi < overworldHeight; yi++) {
     for (let xi = 0; xi < overworldWidth; xi++) {
       const key = rng.pick(list)
-      create(key, xi, yi)
+      if (key !== 'nothing') {
+        if (key !== 'grass' && key !== 'deadGrass') create('grass', xi, yi)
+        create(key, xi, yi)
+      }
     }
   }
 }
