@@ -1,11 +1,12 @@
-import 'tailwindcss/tailwind.css'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import 'tailwindcss/tailwind.css'
 
 import App from './App'
-import { createPIXIApp, loadAssetBundle } from './lib/pixi'
-export { config } from './config'
 import { createEngine } from './engine/engine'
+import { createPIXIApp, loadAssetBundle } from './lib/pixi'
+
+export { config } from './config'
 
 export const app = createPIXIApp()
 await loadAssetBundle()

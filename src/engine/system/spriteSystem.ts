@@ -1,6 +1,7 @@
-import { app, engine, config } from '@/.'
 import { AnimatedSprite, Container, Sprite, Texture } from 'pixi.js'
+
 import { Entity } from '../entity'
+import { app, config, engine } from '@/.'
 import { rng } from '@/lib/rng'
 
 type Viewport = typeof engine.store.state.viewport

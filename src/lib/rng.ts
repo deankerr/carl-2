@@ -1,7 +1,7 @@
 import random, { Random } from 'random'
 import seedrandom from 'seedrandom'
-// import { config } from '@/.'
-import { config } from '../config'
+
+import { config } from '@/.'
 
 class RandomExtended extends Random {
   seed(seed: string) {

@@ -1,7 +1,7 @@
-// import { config } from '@/config'
-import { config } from '../config'
 import { Application, Assets } from 'pixi.js'
+
 import manifest from '../public/assets/manifest.json'
+import { config } from '@/.'
 
 export function createPIXIApp() {
   const app = new Application<HTMLCanvasElement>({

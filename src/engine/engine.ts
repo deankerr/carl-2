@@ -1,12 +1,12 @@
 import { World } from 'miniplex'
 import { makeStore } from 'statery'
 
-import { app, config } from '@/.'
 import { Entity, createEntityFactory } from './entity'
 import { createInput } from './input'
 import { createOutdoors } from './region'
-import { createSpriteSystem } from './system/spriteSystem'
 import { createFilterSystem } from './system/filterSystem'
+import { createSpriteSystem } from './system/spriteSystem'
+import { app, config } from '@/.'
 
 type System = (dt: number) => void
 

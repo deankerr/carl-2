@@ -1,5 +1,6 @@
-import { engine } from '@/.'
 import { useStore } from 'statery'
+
+import { engine } from '@/.'
 
 type Props = {
   engine: typeof engine

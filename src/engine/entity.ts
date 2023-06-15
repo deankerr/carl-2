@@ -1,5 +1,6 @@
 import { World } from 'miniplex'
 import { AnimatedSprite, Container, Sprite } from 'pixi.js'
+
 import { entityTemplates } from './templates'
 
 // TODO cleanup types

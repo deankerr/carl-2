@@ -1,11 +1,12 @@
-import { app, config } from '@/.'
 import {
-  GodrayFilter,
   AdvancedBloomFilter,
   CRTFilter,
+  GodrayFilter,
   ReflectionFilter,
 } from 'pixi-filters'
 import { Filter } from 'pixi.js'
+
+import { app, config } from '@/.'
 
 export function createFilterSystem() {
   const godrays = new GodrayFilter()

@@ -1,6 +1,7 @@
-import { app, engine, config } from '@/.'
 import { useLayoutEffect, useRef } from 'react'
+
 import { DebugInfo } from './ui/DebugInfo'
+import { app, config, engine } from '@/.'
 
 type AppProps = {
   engine: typeof engine

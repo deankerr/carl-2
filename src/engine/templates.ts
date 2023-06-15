@@ -1,5 +1,5 @@
-import { pallette } from '@/lib/color'
 import { Tag } from './entity'
+import { pallette } from '@/lib/color'
 
 type Template = {
   sprite: string | string[]
