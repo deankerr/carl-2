@@ -1,21 +1,15 @@
 import { useStore } from 'statery'
 
-import { engine } from '@/.'
-import { world } from '@/engine/entity'
 import { store } from '@/engine/store'
 
-type Props = {
-  engine: typeof engine
-}
-
-export function DebugInfo({ engine }: Props) {
-  const { viewport, stats } = useStore(store)
+export function DebugInfo() {
+  const { viewport, stats, player } = useStore(store)
+  const { fps, spritesRendered, spritesTotal, worldSize } = stats
 
   return (
     <div className="border-0 border-red-700">
-      FPS: {stats.fps} Entities: {world.size} Viewport: [{viewport.x},{' '}
-      {viewport.y}] Sprites: {stats.spritesRendered}/{stats.spritesTotal}{' '}
-      Player: [{engine.player.position.x}, {engine.player.position.y}]
+      FPS: {fps} Entities: {worldSize} Viewport: [{viewport.x}, {viewport.y}]
+      Sprites: {spritesRendered}/{spritesTotal} Player: [{player.x}, {player.y}]
     </div>
   )
 }

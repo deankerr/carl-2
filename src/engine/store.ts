@@ -13,5 +13,10 @@ export const store = makeStore({
     fps: 0,
     spritesTotal: 0,
     spritesRendered: 0,
+    worldSize: 0,
+  },
+  player: {
+    x: 0,
+    y: 0,
   },
 })

@@ -1,4 +1,4 @@
-import { create } from './entity'
+import { create, world } from './entity'
 import { bindInput } from './input'
 import { createOutdoors } from './region'
 import { store } from './store'
@@ -16,7 +16,6 @@ export function createEngine() {
 
   // Game turn update loop
   const update = (tempAction: string) => {
-    // console.log('update', tempAction)
     switch (tempAction) {
       case 'pc left':
         player.position.x--
@@ -30,11 +29,15 @@ export function createEngine() {
       case 'pc down':
         player.position.y++
     }
+    store.set(() => ({
+      player: { ...player.position },
+    }))
   }
   bindInput(update)
 
   const init = () => {
     console.log('init')
+
     // Systems
     const systems = [createSpriteSystem(), createFilterSystem()]
 
@@ -47,17 +50,18 @@ export function createEngine() {
 
     // Overworld
     createOutdoors()
-
-    // FPS counter
-    setInterval(() => {
-      store.set((state) => ({
-        stats: {
-          ...state.stats,
-          fps: Math.floor(app.ticker.FPS),
-        },
-      }))
-    }, 250)
   }
 
   return { init, create, player }
 }
+
+// update debug ui stats
+setInterval(() => {
+  store.set((state) => ({
+    stats: {
+      ...state.stats,
+      fps: Math.floor(app.ticker.FPS),
+      worldSize: world.size,
+    },
+  }))
+}, 250)
