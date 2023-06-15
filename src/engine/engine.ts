@@ -1,6 +1,4 @@
-import { World } from 'miniplex'
-
-import { Entity, createEntityFactory } from './entity'
+import { create } from './entity'
 import { bindInput } from './input'
 import { createOutdoors } from './region'
 import { store } from './store'
@@ -12,12 +10,9 @@ const { playerSpawnPosition: pc } = config
 
 export function createEngine() {
   console.log('create engine')
-  // Entities
-  const world = new World<Entity>()
-  const createEntity = createEntityFactory(world)
 
   // temp - needed before turn scheduler implemented
-  const player = createEntity('player', pc.x, pc.y)
+  const player = create('player', pc.x, pc.y)
 
   // Game turn update loop
   const update = (tempAction: string) => {
@@ -64,5 +59,5 @@ export function createEngine() {
     }, 250)
   }
 
-  return { init, createEntity, world, player }
+  return { init, create, player }
 }

@@ -3,8 +3,6 @@ import { AnimatedSprite, Container, Sprite } from 'pixi.js'
 
 import { entityTemplates } from './templates'
 
-// TODO cleanup types
-
 export type Entity = {
   id: number // ?
   base: EntityTemplate
@@ -32,31 +30,6 @@ export type Tag = 'isPlayer' | 'solid'
 export type EntityKey = keyof typeof entityTemplates
 type EntityTemplate = (typeof entityTemplates)[EntityKey]
 
-export function createEntityFactory(world: World<Entity>) {
-  let entityCount = 0 // TODO move to state
-
-  const create = (key: EntityKey, x: number, y: number): Entity => {
-    const template = entityTemplates[key]
-
-    if ('animate' in template) {
-      //
-    }
-
-    const entity = {
-      id: entityCount++,
-      base: entityTemplates[key],
-
-      position: { x, y },
-      ...createTags(template),
-    }
-
-    world.add(entity)
-    return entity
-  }
-
-  return create
-}
-
 function createTags(template: EntityTemplate) {
   if (!('tags' in template)) return {}
 
@@ -68,3 +41,21 @@ function createTags(template: EntityTemplate) {
 
   return tags
 }
+
+let nextEntityID = 0
+export function create(key: EntityKey, x: number, y: number): Entity {
+  const template = entityTemplates[key]
+
+  const entity = {
+    id: nextEntityID++,
+    base: entityTemplates[key],
+
+    position: { x, y },
+    ...createTags(template),
+  }
+
+  world.add(entity)
+  return entity
+}
+
+export const world = new World<Entity>()

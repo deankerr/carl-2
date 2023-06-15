@@ -1,6 +1,6 @@
 import { AnimatedSprite, Container, Sprite, Texture } from 'pixi.js'
 
-import { Entity } from '../entity'
+import { Entity, world } from '../entity'
 import { store } from '../store'
 import { app, config, engine } from '@/.'
 import { rng } from '@/lib/rng'
@@ -9,7 +9,7 @@ type Viewport = typeof store.state.viewport
 type Position = { x: number; y: number }
 
 export function createSpriteSystem() {
-  const { world, player } = engine
+  const { player } = engine
 
   // queries
   const spritelessEntities = world.with('position').without('_sprite')

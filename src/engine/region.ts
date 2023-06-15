@@ -1,5 +1,5 @@
-import { Entity, EntityKey } from './entity'
-import { config, engine } from '@/.'
+import { Entity, EntityKey, create } from './entity'
+import { config } from '@/.'
 import { rng } from '@/lib/rng'
 
 const { overworldWidth, overworldHeight } = config
@@ -43,7 +43,7 @@ function createLake(
 ) {
   for (let yi = y; yi < y + h; yi++) {
     for (let xi = x; xi < x + w; xi++) {
-      engine.createEntity(key, xi, yi)
+      create(key, xi, yi)
     }
   }
 }
@@ -59,7 +59,7 @@ function spawnEachCellChance(keys: Partial<Record<EntityKey, number>>) {
   for (let yi = 0; yi < overworldHeight; yi++) {
     for (let xi = 0; xi < overworldWidth; xi++) {
       const key = rng.pick(list)
-      engine.createEntity(key, xi, yi)
+      create(key, xi, yi)
     }
   }
 }
