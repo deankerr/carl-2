@@ -4,6 +4,15 @@ export const pallette = {
   forestPalette3: ['#34805C', '#35872D', '#65702B', '#8A7A2C', '#7D5D29'],
   flowers1: ['#4CB5AE', '#F7EF99', '#F25F5C', '#C2AFF0', '#A80874'],
   flowers2: ['#00ffee', '#fff68f', '#ff4f4d', '#bb9eff', '#b30077'],
+  grassAlive: [
+    '#34805C',
+    '#35872D',
+    '#167D23',
+    '#357D29',
+    '#58872D',
+    '#5B8718',
+  ],
+  grassDead: ['#8A7A2C', '#70671A', '#876418', '#7D7029', '#804012', '#56433d'],
 }
 
 /*

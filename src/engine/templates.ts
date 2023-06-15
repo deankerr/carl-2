@@ -74,16 +74,16 @@ const flora = {
 
   grass: {
     sprite: [
-      'grass_a1',
-      'grass_a2',
-      'grass_a3',
-      'grass_a4',
-      'grass_a5',
-      'grass_a6',
-      'grass_a7',
-      'grass_a8',
+      'grass_b1',
+      'grass_b2',
+      'grass_b3',
+      'grass_b4',
+      'grass_b5',
+      'grass_b6',
+      'grass_b7',
+      'grass_b8',
     ],
-    tint: pallette.forestPalette3,
+    tint: pallette.grassAlive,
   },
 
   deadGrass: {
@@ -97,7 +97,7 @@ const flora = {
       'grass_b7',
       'grass_b8',
     ],
-    tint: ['#56433d'],
+    tint: pallette.grassDead,
   },
 } satisfies Record<string, Template>
 
