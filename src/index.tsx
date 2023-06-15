@@ -13,7 +13,6 @@ await loadAssetBundle()
 
 export const engine = createEngine()
 engine.init()
-app.ticker.add((dt: number) => engine.run(dt))
 
 const container = document.getElementById('root') as HTMLDivElement
 const root = createRoot(container)
