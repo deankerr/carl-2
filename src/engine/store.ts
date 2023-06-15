@@ -15,7 +15,7 @@ export const store = makeStore({
     spritesRendered: 0,
     worldSize: 0,
   },
-  player: {
+  playerPosition: {
     x: 0,
     y: 0,
   },

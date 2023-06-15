@@ -2,30 +2,25 @@ import { AnimatedSprite, Container, Sprite, Texture } from 'pixi.js'
 
 import { Entity, world } from '../entity'
 import { store } from '../store'
-import { app, config, engine } from '@/.'
+import { app, config } from '@/.'
 import { rng } from '@/lib/rng'
 
 type Viewport = typeof store.state.viewport
 type Position = { x: number; y: number }
 
 export function createSpriteSystem() {
-  const { player } = engine
-
   // queries
   const spritelessEntities = world.with('position').without('_sprite')
   const spriteEntities = world.with('position', '_sprite')
+  const [player] = world.with('position', 'isPlayer')
 
   return () => {
-    // update viewport location // ? move to end, set in one go?
-    store.set((state) => ({
-      viewport: {
-        ...state.viewport,
-        x: player.position.x - Math.floor(state.viewport.width / 2),
-        y: player.position.y - Math.floor(state.viewport.height / 2),
-      },
-    }))
+    // update viewport location
+    const viewport = { ...store.state.viewport }
+    const anchor = player ? player.position : { x: 0, y: 0 }
 
-    const { viewport } = store.state
+    viewport.x = anchor.x - Math.floor(viewport.width / 2)
+    viewport.y = anchor.y - Math.floor(viewport.height / 2)
 
     // create sprite for new entities
     let spritesCreated = 0
@@ -129,6 +124,7 @@ export function createSpriteSystem() {
 
     // update log
     store.set((state) => ({
+      viewport,
       stats: {
         ...state.stats,
         spritesTotal: state.stats.spritesTotal + spritesCreated,

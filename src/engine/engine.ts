@@ -30,7 +30,7 @@ export function createEngine() {
         player.position.y++
     }
     store.set(() => ({
-      player: { ...player.position },
+      playerPosition: { ...player.position },
     }))
   }
   bindInput(update)
@@ -52,7 +52,7 @@ export function createEngine() {
     createOutdoors()
   }
 
-  return { init, create, player }
+  return { init, create }
 }
 
 // update debug ui stats
