@@ -12,15 +12,14 @@ import { app, config } from '@/.'
 export function createEngine() {
   console.log('create engine')
 
-  // temp - needed before turn scheduler implemented
+  //* temp - needed before turn scheduler implemented
   const player = create(
     'player',
     config.viewportWidth >> 1,
     config.viewportHeight >> 1
   )
 
-  // Game turn update loop
-  const update = (tempAction: string) => {
+  const handleInput = (tempAction: string) => {
     switch (tempAction) {
       case 'pc left':
         player.position.x--
@@ -38,34 +37,28 @@ export function createEngine() {
       playerPosition: { ...player.position },
     }))
   }
-  bindInput(update)
 
-  const init = () => {
-    console.log('init')
+  bindInput(handleInput)
 
-    // Systems
-    const systems = [
-      spriteCreationSystem(),
-      spriteUpdateSystem(),
-      createFilterSystem(),
-    ]
+  //* Systems
+  const systems = [
+    spriteCreationSystem(),
+    spriteUpdateSystem(),
+    createFilterSystem(),
+  ]
 
-    const runSystems = (dt: number) => {
-      for (const system of systems) {
-        if (system) system(dt)
-      }
+  const runSystems = (dt: number) => {
+    for (const system of systems) {
+      if (system) system(dt)
     }
-    app.ticker.add(runSystems)
-
-    // Overworld
-    createOutdoors()
-    // createOcean()
   }
+  app.ticker.add(runSystems)
 
-  return { init, create }
+  //* Create overworld
+  createOutdoors()
 }
 
-// update debug ui stats
+//* update debug ui stats
 setInterval(() => {
   store.set((state) => ({
     stats: {

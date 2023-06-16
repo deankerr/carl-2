@@ -12,7 +12,6 @@ export const app = createPIXIApp()
 await loadAssetBundle()
 
 export const engine = createEngine()
-engine.init()
 
 const container = document.getElementById('root') as HTMLDivElement
 const root = createRoot(container)
