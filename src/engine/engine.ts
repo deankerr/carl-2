@@ -1,6 +1,6 @@
 import { create, world } from './entity'
 import { bindInput } from './input'
-import { createOutdoors } from './region'
+import { createOcean, createOutdoors } from './region'
 import { store } from './store'
 import { createFilterSystem } from './system/filterSystem'
 import { createSpriteSystem } from './system/spriteSystem'
@@ -50,6 +50,7 @@ export function createEngine() {
 
     // Overworld
     createOutdoors()
+    // createOcean()
   }
 
   return { init, create }

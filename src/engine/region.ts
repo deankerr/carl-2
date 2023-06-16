@@ -25,14 +25,14 @@ export function createOutdoors() {
     mushroom: 1,
   })
 
-  circle('waterA', [10, 8], 4)
-  circle('waterB', [48, 8], 4)
-  circle('waterC', [10, 22], 4)
-  circle('waterD', [48, 22], 4)
+  circle('waterA', [10, 8], 5)
+  circle('waterB', [48, 8], 5)
+  circle('waterC', [10, 22], 5)
+  circle('waterD', [48, 22], 5)
 }
 
 export function createOcean() {
-  spawnEachCellChance({ waterA: 1 })
+  spawnEachCellChance({ waterB: 1 })
 }
 
 export function rectangle(
