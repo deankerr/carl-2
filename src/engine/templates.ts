@@ -5,7 +5,7 @@ type Template = {
   sprite: string | string[]
   tint: string | string[]
   bgTint?: string | string[]
-  zIndex?: number
+  layer?: number
   animate?: number
   tags?: Tag[]
 }
@@ -14,7 +14,7 @@ const beings = {
   player: {
     sprite: '@',
     tint: '#ee82ee',
-    zIndex: 3,
+    layer: 3,
     tags: ['isPlayer'],
   },
 } satisfies Record<string, Template>
@@ -54,16 +54,7 @@ const flora = {
   },
 
   flowers: {
-    sprite: [
-      'flower_b1',
-      'flower_b2',
-      'flower_b3',
-      'flower_b4',
-      'flower_b5',
-      // 'flower_6',
-      // 'flower_7',
-      // 'flower_8',
-    ],
+    sprite: ['flower_b1', 'flower_b2', 'flower_b3', 'flower_b4', 'flower_b5'],
     tint: pallette.e32Flowers,
   },
 
@@ -138,28 +129,28 @@ const liquid = {
     sprite: ['water_A1', 'water_A2'],
     tint: pallette.e32Water[1],
     bgTint: pallette.e32Water[0],
-    zIndex: 2, // ! temp
+    layer: 2,
     animate: 1000,
   },
   waterB: {
     sprite: ['water_B1', 'water_B2'],
     tint: pallette.e32Water[1],
     bgTint: pallette.e32Water[0],
-    zIndex: 2, // ! temp
+    layer: 2,
     animate: 1000,
   },
   waterC: {
     sprite: ['water_C1', 'water_C2'],
     tint: pallette.e32Water[1],
     bgTint: pallette.e32Water[0],
-    zIndex: 2, // ! temp
+    layer: 2,
     animate: 1000,
   },
   waterD: {
     sprite: ['water_D1', 'water_D2'],
     tint: pallette.e32Water[1],
     bgTint: pallette.e32Water[0],
-    zIndex: 2, // ! temp
+    layer: 2,
     animate: 1000,
   },
 } satisfies Record<string, Template>

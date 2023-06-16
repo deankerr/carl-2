@@ -5,6 +5,11 @@ import { store } from '../store'
 import { app, config } from '@/.'
 import { rng } from '@/lib/rng'
 
+// TODO Refactor
+// - move all sprites by moving main container?
+// - encapsulate sprite creation +
+// - completely rethink sprite creation/definitions
+
 type Viewport = typeof store.state.viewport
 type Position = { x: number; y: number }
 
@@ -14,20 +19,17 @@ export function createSpriteSystem() {
   const spriteEntities = world.with('position', '_sprite')
   const [player] = world.with('position', 'isPlayer')
 
+  // sprite z level layers
+  const layers = createLayers()
+
   return () => {
-    // update viewport location
+    //* update viewport location
     const viewport = { ...store.state.viewport }
     const anchor = player ? player.position : { x: 0, y: 0 }
     viewport.x = anchor.x - Math.floor(viewport.width / 2)
     viewport.y = anchor.y - Math.floor(viewport.height / 2)
 
-    // ! testing
-    const grassContainer = new Container()
-    const othersContainer = new Container()
-    const beingsContainer = new Container()
-    app.stage.addChild(grassContainer, othersContainer, beingsContainer)
-
-    // create sprite for new entities
+    //* create sprite for new entities
     let spritesCreated = 0
     for (const entity of spritelessEntities) {
       // For the sprite, tint and background tint sprite, pick a random sprite if
@@ -99,16 +101,13 @@ export function createSpriteSystem() {
       foreground.tint = tint
       container.addChild(foreground)
 
+      //* add to stage
       const { x, y } = calculateScreenPosition(viewport, entity.position)
       container.position.set(x, y)
-      container.zIndex = 'zIndex' in entity.base ? entity.base.zIndex : 1
+      const layer = 'layer' in entity.base ? entity.base.layer : 0
+      layers.add(container, layer)
 
-      // ! testing
-      // app.stage.addChild(container)
-      if (entity.isGrass) grassContainer.addChild(container)
-      else if (entity.isPlayer) beingsContainer.addChild(container)
-      else othersContainer.addChild(container)
-
+      //* add sprite component to entity
       const _sprite: Entity['_sprite'] = { container, foreground }
       if (background) _sprite.background = background
 
@@ -116,7 +115,7 @@ export function createSpriteSystem() {
       spritesCreated++
     }
 
-    // update sprites
+    //* update sprites
     // TODO only update if necessary
     let spritesRendered = 0
     for (const entity of spriteEntities) {
@@ -131,7 +130,7 @@ export function createSpriteSystem() {
       }
     }
 
-    // update log
+    //* update log
     store.set((state) => ({
       viewport,
       stats: {
@@ -161,4 +160,22 @@ function shouldRenderSprite(viewport: Viewport, position: Position) {
     position.y >= viewport.y &&
     position.y <= viewport.y + viewport.height
   )
+}
+
+function createLayers() {
+  const layers: Container[] = []
+
+  const add = (sprite: Container, layer = 0) => {
+    if (!layers[layer]) {
+      const container = new Container()
+      layers[layer] = container
+
+      app.stage.removeChildren()
+      app.stage.addChild(...layers.filter((l) => l !== undefined))
+    }
+
+    layers[layer].addChild(sprite)
+  }
+
+  return { layers, add }
 }
