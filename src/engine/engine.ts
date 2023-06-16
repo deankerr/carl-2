@@ -1,6 +1,6 @@
 import { create, world } from './entity'
 import { bindInput } from './input'
-import { createOcean, createOutdoors } from './region'
+import { createOutdoors } from './region'
 import { store } from './store'
 import { createFilterSystem } from './system/filterSystem'
 import { createSpriteSystem } from './system/spriteSystem'

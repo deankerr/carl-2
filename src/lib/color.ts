@@ -16,10 +16,10 @@ export const pallette = {
     '#c0cbdc', '#8b9bb4', '#5a6988', '#3a4466', '#262b44', '#181425', '#ff0044', '#68386c', '#b55088', '#f6757a',
     '#e8b796', '#c28569',
   ],
-  e32Grass: ['#3e8948'],
+  e32Grass: ['#63c74d'],
   e32DeadGrass: ['#b86f50'],
-  e32DeadTree: ['#3e2731'],
-  e32Tree: ['#63c74d'],
+  e32DeadTree: ['#733e39'],
+  e32Tree: ['#3e8948'],
   e32Mushroom: ['#f77622', '#e4a672'],
   e32Flowers: ['#be4a2f', '#feae34', '#2ce8f5', '#fee761', '#b55088'],
   e32Water: ['#124e89', '#0099db' ]

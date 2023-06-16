@@ -16,7 +16,6 @@ export const store = makeStore({
     worldSize: 0,
   },
   playerPosition: {
-    x: 0,
-    y: 0,
+    ...config.playerSpawnPosition,
   },
 })

@@ -25,28 +25,12 @@ export function createOutdoors() {
     mushroom: 1,
   })
 
-  circle('waterA', [10, 8], 5)
-  circle('waterB', [48, 8], 5)
-  circle('waterC', [10, 22], 5)
-  circle('waterD', [48, 22], 5)
+  lake('waterA', [10, 8], 4)
+  lake('waterA', [48, 22], 4)
 }
 
 export function createOcean() {
   spawnEachCellChance({ waterB: 1 })
-}
-
-export function rectangle(
-  key: EntityKey,
-  x: number,
-  y: number,
-  w: number,
-  h: number
-) {
-  for (let yi = y; yi < y + h; yi++) {
-    for (let xi = x; xi < x + w; xi++) {
-      create(key, xi, yi)
-    }
-  }
 }
 
 function spawnEachCellChance(
@@ -69,6 +53,20 @@ function spawnEachCellChance(
   }
 }
 
+export function rectangle(
+  key: EntityKey,
+  x: number,
+  y: number,
+  w: number,
+  h: number
+) {
+  for (let yi = y; yi < y + h; yi++) {
+    for (let xi = x; xi < x + w; xi++) {
+      create(key, xi, yi)
+    }
+  }
+}
+
 function circle(key: EntityKey, center: Point, radius: number) {
   // https://www.redblobgames.com/grids/circle-drawing/
   const top = Math.ceil(center[1] - radius)
@@ -84,4 +82,13 @@ function circle(key: EntityKey, center: Point, radius: number) {
       create(key, x, y)
     }
   }
+}
+
+function lake(key: EntityKey, center: Point, size: number) {
+  const x = rng.int(2, 3) * rng.pick([-1, 1])
+  const y = rng.int(0, 1) * rng.pick([-1, 1])
+  const center2: Point = [center[0] + x, center[1] + y]
+
+  circle(key, center, size)
+  circle(key, center2, size + rng.pick([-1, 1]))
 }
