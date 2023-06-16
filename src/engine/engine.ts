@@ -10,7 +10,7 @@ import {
 import { config } from '@/.'
 import { app } from '@/lib/pixi'
 
-export function createEngine() {
+function createEngine() {
   console.log('create engine')
 
   //* temp - needed before turn scheduler implemented
@@ -53,11 +53,18 @@ export function createEngine() {
       if (system) system(dt)
     }
   }
-  app.ticker.add(runSystems)
 
   //* Create overworld
   createOutdoors()
+
+  const start = () => {
+    app.ticker.add(runSystems)
+  }
+
+  return { start }
 }
+
+export const engine = createEngine()
 
 //* update debug ui stats
 setInterval(() => {
