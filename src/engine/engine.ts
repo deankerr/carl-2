@@ -3,7 +3,8 @@ import { bindInput } from './input'
 import { createOutdoors } from './region'
 import { store } from './store'
 import { createFilterSystem } from './system/filterSystem'
-import { createSpriteSystem } from './system/spriteSystem'
+import { spriteCreationSystem } from './system/spriteCreationSystem'
+import { spriteUpdateSystem } from './system/spriteUpdateSystem'
 import { app, config } from '@/.'
 
 const { playerSpawnPosition: pc } = config
@@ -39,7 +40,11 @@ export function createEngine() {
     console.log('init')
 
     // Systems
-    const systems = [createSpriteSystem(), createFilterSystem()]
+    const systems = [
+      spriteCreationSystem(),
+      spriteUpdateSystem(),
+      createFilterSystem(),
+    ]
 
     const runSystems = (dt: number) => {
       for (const system of systems) {
