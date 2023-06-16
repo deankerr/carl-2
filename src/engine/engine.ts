@@ -7,7 +7,8 @@ import {
   spriteCreationSystem,
   spriteUpdateSystem,
 } from './system'
-import { app, config } from '@/.'
+import { config } from '@/.'
+import { app } from '@/lib/pixi'
 
 export function createEngine() {
   console.log('create engine')

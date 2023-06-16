@@ -2,7 +2,7 @@ import { AnimatedSprite, Container, Sprite, Texture } from 'pixi.js'
 
 import { Entity, world } from '../entity'
 import { store } from '../store'
-import { app } from '@/.'
+import { app } from '@/lib/pixi'
 import { rng } from '@/lib/rng'
 
 // TODO Refactor - completely rethink sprite creation/definitions

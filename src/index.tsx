@@ -4,11 +4,10 @@ import 'tailwindcss/tailwind.css'
 
 import App from './App'
 import { createEngine } from './engine/engine'
-import { createPIXIApp, loadAssetBundle } from './lib/pixi'
+import { loadAssetBundle } from './lib/pixi'
 
 export { config } from './config'
 
-export const app = createPIXIApp()
 await loadAssetBundle()
 
 export const engine = createEngine()

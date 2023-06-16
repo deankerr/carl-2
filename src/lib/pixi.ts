@@ -8,24 +8,19 @@ const { tileSizePx, viewportWidth, viewportHeight } = config
 const appWidth = tileSizePx * viewportWidth
 const appHeight = tileSizePx * viewportHeight
 
-export function createPIXIApp() {
-  const app = new Application<HTMLCanvasElement>({
-    width: appWidth,
-    height: appHeight,
-  })
+const appMargin = 48
 
-  // PIXI.JS Firefox extension support
-  // window.__PIXI_APP__ = app
+export const app = new Application<HTMLCanvasElement>({
+  width: appWidth,
+  height: appHeight,
+})
+app.stage.interactiveChildren = false
 
-  app.stage.interactiveChildren = false
+window.addEventListener('resize', resizeApp)
+resizeApp()
 
-  window.addEventListener('resize', () => resizeApp(app))
-  resizeApp(app)
-
-  return app
-}
-
-function resizeApp(app: Application<HTMLCanvasElement>) {
+function resizeApp() {
+  // get size of window
   const screenWidth = Math.max(
     document.documentElement.clientWidth,
     window.innerWidth || 0
@@ -35,13 +30,12 @@ function resizeApp(app: Application<HTMLCanvasElement>) {
     window.innerHeight || 0
   )
 
+  // scale to the fit the smaller axis
   const scale = Math.min(screenWidth / appWidth, screenHeight / appHeight)
 
-  // adjusted values
-  const margin = 48
-  const newWidth = Math.floor(scale * appWidth) - margin
-  const newHeight = Math.floor(scale * appHeight) - margin
-
+  // set the new size
+  const newWidth = Math.floor(scale * appWidth) - appMargin
+  const newHeight = Math.floor(scale * appHeight) - appMargin
   app.view.style.width = `${newWidth}px`
   app.view.style.height = `${newHeight}px`
 }
