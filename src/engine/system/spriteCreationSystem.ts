@@ -5,6 +5,9 @@ import { store } from '../store'
 import { app } from '@/.'
 import { rng } from '@/lib/rng'
 
+// TODO Refactor - completely rethink sprite creation/definitions
+// ? standardise sprite containers to [bg, fg] - bg visible = null if not needed
+
 export function spriteCreationSystem() {
   const spritelessEntities = world.with('position').without('_sprite')
 
@@ -83,6 +86,8 @@ export function spriteCreationSystem() {
       }
       foreground.tint = tint
       container.addChild(foreground)
+
+      container.visible = false
 
       //* add to stage
       const layer = 'layer' in entity.base ? entity.base.layer : 0

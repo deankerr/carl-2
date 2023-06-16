@@ -1,11 +1,6 @@
 import { world } from '../entity'
 import { store } from '../store'
-import { config } from '@/.'
-
-// TODO Refactor
-// - move all sprites by moving main container?
-// - encapsulate sprite creation +
-// - completely rethink sprite creation/definitions
+import { app, config } from '@/.'
 
 type Viewport = typeof store.state.viewport
 type Position = { x: number; y: number }
@@ -13,7 +8,7 @@ type Position = { x: number; y: number }
 export function spriteUpdateSystem() {
   // queries
   const spriteEntities = world.with('position', '_sprite')
-  const [player] = world.with('position', 'isPlayer')
+  const [player] = world.with('position', 'isPlayer') //? pull from store?
 
   return () => {
     //* update viewport location
@@ -30,11 +25,17 @@ export function spriteUpdateSystem() {
       config.overworldHeight
     )
 
+    //* slide main container to match where the viewport should be
+    app.stage.position.set(
+      -viewport.x * config.tileSizePx,
+      -viewport.y * config.tileSizePx
+    )
+
     //* update sprites
     // TODO only update if necessary
     let spritesRendered = 0
     for (const entity of spriteEntities) {
-      const { x, y } = calculateScreenPosition(viewport, entity.position)
+      const { x, y } = calculateScreenPosition(entity.position)
       entity._sprite.container.position.set(x, y)
 
       if (shouldRenderSprite(viewport, entity.position)) {
@@ -45,7 +46,7 @@ export function spriteUpdateSystem() {
       }
     }
 
-    //* update log
+    //* update viewport/stats
     store.set((state) => ({
       viewport,
       stats: {
@@ -62,24 +63,27 @@ function calculateViewportPosition(
   regionSize: number
 ) {
   const halfViewportSize = Math.floor(viewportSize / 2)
-  if (anchor < halfViewportSize) return 0
-  else if (anchor >= regionSize - halfViewportSize)
+
+  if (anchor < halfViewportSize) {
+    return 0
+  } else if (anchor >= regionSize - halfViewportSize) {
     return regionSize - viewportSize
+  }
+
   return anchor - halfViewportSize
 }
 
-function calculateScreenPosition(viewport: Viewport, position: Position) {
-  const x = (position.x - viewport.x) * config.tileSizePx
-  const y = (position.y - viewport.y) * config.tileSizePx
+function calculateScreenPosition(position: Position) {
+  const x = position.x * config.tileSizePx
+  const y = position.y * config.tileSizePx
 
   return { x, y }
 }
 
 function shouldRenderSprite(viewport: Viewport, position: Position) {
-  return (
-    position.x >= viewport.x &&
-    position.x <= viewport.x + viewport.width &&
-    position.y >= viewport.y &&
-    position.y <= viewport.y + viewport.height
-  )
+  const xInBounds =
+    position.x >= viewport.x && position.x <= viewport.x + viewport.width
+  const yInBounds =
+    position.y >= viewport.y && position.y <= viewport.y + viewport.height
+  return xInBounds && yInBounds
 }
