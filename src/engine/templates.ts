@@ -44,7 +44,7 @@ const flora = {
   },
 
   shrub: {
-    sprite: 'shrub_1',
+    sprite: ['shrub_1', 'shrub_2'],
     tint: pallette.e32Tree,
   },
 
@@ -55,14 +55,14 @@ const flora = {
 
   flowers: {
     sprite: [
-      'flower_1',
-      'flower_2',
-      'flower_3',
-      'flower_4',
-      'flower_5',
-      'flower_6',
-      'flower_7',
-      'flower_8',
+      'flower_b1',
+      'flower_b2',
+      'flower_b3',
+      'flower_b4',
+      'flower_b5',
+      // 'flower_6',
+      // 'flower_7',
+      // 'flower_8',
     ],
     tint: pallette.e32Flowers,
   },
@@ -133,35 +133,32 @@ const mineral = {
   },
 } satisfies Record<string, Template>
 
-const c_waterLight = '#285f9d'
-const c_waterDark = '#132e4e'
-
 const liquid = {
   waterA: {
     sprite: ['water_A1', 'water_A2'],
-    tint: c_waterLight,
-    bgTint: c_waterDark,
+    tint: pallette.e32Water[1],
+    bgTint: pallette.e32Water[0],
     zIndex: 2, // ! temp
     animate: 1000,
   },
   waterB: {
     sprite: ['water_B1', 'water_B2'],
-    tint: c_waterLight,
-    bgTint: c_waterDark,
+    tint: pallette.e32Water[1],
+    bgTint: pallette.e32Water[0],
     zIndex: 2, // ! temp
     animate: 1000,
   },
   waterC: {
     sprite: ['water_C1', 'water_C2'],
-    tint: c_waterLight,
-    bgTint: c_waterDark,
+    tint: pallette.e32Water[1],
+    bgTint: pallette.e32Water[0],
     zIndex: 2, // ! temp
     animate: 1000,
   },
   waterD: {
     sprite: ['water_D1', 'water_D2'],
-    tint: c_waterLight,
-    bgTint: c_waterDark,
+    tint: pallette.e32Water[1],
+    bgTint: pallette.e32Water[0],
     zIndex: 2, // ! temp
     animate: 1000,
   },
