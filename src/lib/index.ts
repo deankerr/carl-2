@@ -1,5 +1,4 @@
 export * from './color'
 export * from './pixi'
 export * from './rng'
-export * from './test2'
 export * from './util'

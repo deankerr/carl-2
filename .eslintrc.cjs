@@ -44,9 +44,5 @@ module.exports = {
     'tailwindcss/classnames-order': 'warn',
     'tailwindcss/no-custom-classname': 'warn',
     'tailwindcss/no-contradicting-classname': 'error',
-    // custom
-    'prefer-const': 'warn',
-    // let vscode/ts handle it
-    '@typescript-eslint/no-unused-vars': 'off',
   },
 }

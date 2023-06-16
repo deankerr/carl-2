@@ -15,6 +15,7 @@
     "test:ui": "vitest --ui",
     "lint": "eslint src --max-warnings=0",
     "typecheck": "tsc --project tsconfig.json --noEmit",
+    "check": "eslint src --max-warnings=0 && tsc --project tsconfig.json --noEmit",
     "assets": "node raw-assets/sprites/generateJSON.mjs"
   },
   "dependencies": {
