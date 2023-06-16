@@ -1,23 +1,12 @@
-const tileSizePx = 16
-const viewportWidthCells = 59
-const viewportHeightCells = 31
-
 export const config = {
-  seed: 'tommy',
+  seed: '',
   enableDemoFilters: false,
   showDebugUI: true,
-  playerSpawnPosition: {
-    x: viewportWidthCells >> 1,
-    y: viewportHeightCells >> 1,
-  },
 
-  tileSizePx,
+  tileSizePx: 16,
 
-  viewportWidthCells,
-  viewportHeightCells,
-
-  pixiAppWidth: viewportWidthCells * tileSizePx,
-  pixiAppHeight: viewportHeightCells * tileSizePx,
+  viewportWidth: 59,
+  viewportHeight: 31,
 
   overworldWidth: 100,
   overworldHeight: 100,

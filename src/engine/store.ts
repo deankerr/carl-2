@@ -6,8 +6,8 @@ export const store = makeStore({
   viewport: {
     x: 0,
     y: 0,
-    width: config.viewportWidthCells,
-    height: config.viewportHeightCells,
+    width: config.viewportWidth,
+    height: config.viewportHeight,
   },
   stats: {
     fps: 0,
@@ -16,6 +16,7 @@ export const store = makeStore({
     worldSize: 0,
   },
   playerPosition: {
-    ...config.playerSpawnPosition,
+    x: 0,
+    y: 0,
   },
 })

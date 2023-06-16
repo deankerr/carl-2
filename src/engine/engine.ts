@@ -9,13 +9,15 @@ import {
 } from './system'
 import { app, config } from '@/.'
 
-const { playerSpawnPosition: pc } = config
-
 export function createEngine() {
   console.log('create engine')
 
   // temp - needed before turn scheduler implemented
-  const player = create('player', pc.x, pc.y)
+  const player = create(
+    'player',
+    config.viewportWidth >> 1,
+    config.viewportHeight >> 1
+  )
 
   // Game turn update loop
   const update = (tempAction: string) => {

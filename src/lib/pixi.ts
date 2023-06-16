@@ -3,16 +3,20 @@ import { Application, Assets } from 'pixi.js'
 import manifest from '../public/assets/manifest.json'
 import { config } from '@/.'
 
+const { tileSizePx, viewportWidth, viewportHeight } = config
+
+const appWidth = tileSizePx * viewportWidth
+const appHeight = tileSizePx * viewportHeight
+
 export function createPIXIApp() {
   const app = new Application<HTMLCanvasElement>({
-    width: config.pixiAppWidth,
-    height: config.pixiAppHeight,
+    width: appWidth,
+    height: appHeight,
   })
 
   // PIXI.JS Firefox extension support
   // window.__PIXI_APP__ = app
 
-  // app.stage.sortableChildren = true
   app.stage.interactiveChildren = false
 
   window.addEventListener('resize', () => resizeApp(app))
@@ -31,15 +35,12 @@ function resizeApp(app: Application<HTMLCanvasElement>) {
     window.innerHeight || 0
   )
 
-  const scale = Math.min(
-    screenWidth / config.pixiAppWidth,
-    screenHeight / config.pixiAppHeight
-  )
+  const scale = Math.min(screenWidth / appWidth, screenHeight / appHeight)
 
   // adjusted values
   const margin = 48
-  const newWidth = Math.floor(scale * config.pixiAppWidth) - margin
-  const newHeight = Math.floor(scale * config.pixiAppHeight) - margin
+  const newWidth = Math.floor(scale * appWidth) - margin
+  const newHeight = Math.floor(scale * appHeight) - margin
 
   app.view.style.width = `${newWidth}px`
   app.view.style.height = `${newHeight}px`
