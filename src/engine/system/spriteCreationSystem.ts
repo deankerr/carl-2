@@ -2,11 +2,8 @@ import { AnimatedSprite, Container, Sprite, Texture } from 'pixi.js'
 
 import { Entity, world } from '../entity'
 import { store } from '../store'
-import { app, config } from '@/.'
+import { app } from '@/.'
 import { rng } from '@/lib/rng'
-
-type Viewport = typeof store.state.viewport
-type Position = { x: number; y: number }
 
 export function spriteCreationSystem() {
   const spritelessEntities = world.with('position').without('_sprite')
@@ -15,8 +12,6 @@ export function spriteCreationSystem() {
   const layers = createLayers()
 
   return () => {
-    const { viewport } = store.state
-
     //* create sprite for new entities
     let spritesCreated = 0
     for (const entity of spritelessEntities) {
@@ -90,8 +85,6 @@ export function spriteCreationSystem() {
       container.addChild(foreground)
 
       //* add to stage
-      const { x, y } = calculateScreenPosition(viewport, entity.position)
-      container.position.set(x, y)
       const layer = 'layer' in entity.base ? entity.base.layer : 0
       layers.add(container, layer)
 
@@ -128,12 +121,4 @@ function createLayers() {
   }
 
   return { layers, add }
-}
-
-// ! temp - duplicated
-function calculateScreenPosition(viewport: Viewport, position: Position) {
-  const x = (position.x - viewport.x) * config.tileSizePx
-  const y = (position.y - viewport.y) * config.tileSizePx
-
-  return { x, y }
 }
