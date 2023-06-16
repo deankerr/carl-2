@@ -35,22 +35,22 @@ const structure = {
 const flora = {
   tree: {
     sprite: 'tree',
-    tint: '#417a37',
+    tint: pallette.e32Tree,
   },
 
   deadTree: {
     sprite: 'tree',
-    tint: '#975a05',
+    tint: pallette.e32DeadTree,
   },
 
   shrub: {
-    sprite: 'shrub',
-    tint: '#509743',
+    sprite: 'shrub_1',
+    tint: pallette.e32Tree,
   },
 
   plant: {
-    sprite: 'plant',
-    tint: '#62c34a',
+    sprite: 'plant_1',
+    tint: pallette.e32Tree,
   },
 
   flowers: {
@@ -64,12 +64,12 @@ const flora = {
       'flower_7',
       'flower_8',
     ],
-    tint: pallette.flowers2,
+    tint: pallette.e32Flowers,
   },
 
   mushroom: {
     sprite: ['mushroom_1', 'mushroom_2', 'mushroom_3', 'mushroom_4'],
-    tint: ['#975a05', '#8a281d'],
+    tint: pallette.e32Mushroom,
   },
 
   grass: {
@@ -83,7 +83,7 @@ const flora = {
       'grass_b7',
       'grass_b8',
     ],
-    tint: pallette.grassAlive,
+    tint: pallette.e32Grass,
     tags: ['isGrass'],
   },
 
@@ -98,7 +98,7 @@ const flora = {
       'grass_b7',
       'grass_b8',
     ],
-    tint: pallette.grassDead,
+    tint: pallette.e32DeadGrass,
   },
 } satisfies Record<string, Template>
 
@@ -133,8 +133,6 @@ const mineral = {
   },
 } satisfies Record<string, Template>
 
-// const c_waterLight = '#285f9d'
-// const c_waterDark = '#1d4a7d'
 const c_waterLight = '#285f9d'
 const c_waterDark = '#132e4e'
 

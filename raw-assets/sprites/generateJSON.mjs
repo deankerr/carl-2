@@ -30,6 +30,8 @@ const sheets = [
       'flower_1 flower_2 flower_3 flower_4 flower_5 flower_6 flower_7 flower_8',
       'boulder rocks_1 rocks_2 rocks_3 rocks_4 rocks_5 rocks_6 rocks_7 rocks_8',
       'mushroom_1 mushroom_2 mushroom_3 mushroom_4',
+      'shrub_1',
+      'plant_1',
     ],
   },
 ]

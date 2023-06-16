@@ -10,9 +10,10 @@ export function createPIXIApp() {
   })
 
   // PIXI.JS Firefox extension support
-  window.__PIXI_APP__ = app
+  // window.__PIXI_APP__ = app
 
-  app.stage.sortableChildren = true
+  // app.stage.sortableChildren = true
+  app.stage.interactiveChildren = false
 
   window.addEventListener('resize', () => resizeApp(app))
   resizeApp(app)

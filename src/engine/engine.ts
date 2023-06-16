@@ -43,7 +43,7 @@ export function createEngine() {
 
     const runSystems = (dt: number) => {
       for (const system of systems) {
-        system(dt)
+        if (system) system(dt)
       }
     }
     app.ticker.add(runSystems)

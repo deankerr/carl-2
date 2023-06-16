@@ -11,15 +11,15 @@ export type Region = {
 export function createOutdoors() {
   spawnEachCellChance({
     grass: 20,
-    // nothing: 3,
+    nothing: 8,
     deadGrass: 5,
     shrub: 1,
     plant: 1,
     tree: 1,
     deadTree: 1,
     flowers: 1,
-    hill: 1,
-    rocks: 1,
+    // hill: 1,
+    // rocks: 1,
     mushroom: 1,
   })
 
@@ -56,7 +56,6 @@ function spawnEachCellChance(
     for (let xi = 0; xi < overworldWidth; xi++) {
       const key = rng.pick(list)
       if (key !== 'nothing') {
-        if (key !== 'grass' && key !== 'deadGrass') create('grass', xi, yi)
         create(key, xi, yi)
       }
     }
