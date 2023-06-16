@@ -69,12 +69,8 @@ function calculateViewportPosition(
 }
 
 function calculateScreenPosition(viewport: Viewport, position: Position) {
-  const x =
-    (position.x - viewport.x) * config.tileSizePx +
-    Math.floor(config.paddingPx / 2)
-  const y =
-    (position.y - viewport.y) * config.tileSizePx +
-    Math.floor(config.paddingPx / 2)
+  const x = (position.x - viewport.x) * config.tileSizePx
+  const y = (position.y - viewport.y) * config.tileSizePx
 
   return { x, y }
 }

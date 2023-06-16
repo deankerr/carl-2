@@ -1,7 +1,6 @@
 const tileSizePx = 16
 const viewportWidthCells = 59
 const viewportHeightCells = 31
-const paddingPx = 0
 
 export const config = {
   seed: 'tommy',
@@ -17,10 +16,8 @@ export const config = {
   viewportWidthCells,
   viewportHeightCells,
 
-  paddingPx,
-
-  pixiAppWidth: viewportWidthCells * tileSizePx + paddingPx,
-  pixiAppHeight: viewportHeightCells * tileSizePx + paddingPx,
+  pixiAppWidth: viewportWidthCells * tileSizePx,
+  pixiAppHeight: viewportHeightCells * tileSizePx,
 
   overworldWidth: 100,
   overworldHeight: 100,
