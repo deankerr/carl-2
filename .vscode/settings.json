@@ -8,6 +8,11 @@
   // vscode/prettier bug workaround https://github.com/prettier/prettier-vscode/issues/3019
   "prettier.prettierPath": "./node_modules/prettier",
   // barrel generator
-  "exportall.config.folderListener": ["/src/engine/system"],
-  "exportall.config.semis": false
+  "exportall.config.folderListener": [
+    "/src/engine/system",
+    "/src/engine",
+    "/src/lib"
+  ],
+  "exportall.config.semis": false,
+  "exportall.config.relExclusion": ["/src/engine/system"]
 }

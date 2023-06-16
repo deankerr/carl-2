@@ -1,8 +1,5 @@
-import { config } from 'config'
-
-import { world } from '../entity'
-import { store } from '../store'
-import { app } from '@/lib/pixi'
+import { config, store, world } from '@'
+import { app } from '@lib'
 
 type Viewport = typeof store.state.viewport
 type Position = { x: number; y: number }

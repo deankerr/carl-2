@@ -1,13 +1,13 @@
+import { engine } from '@'
+import { loadAssetBundle } from '@lib'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import 'tailwindcss/tailwind.css'
 
 import App from './App'
-import { engine } from './engine/engine'
-import { loadAssetBundle } from './lib/pixi'
 
 await loadAssetBundle()
-engine.start()
+engine.init()
 
 const container = document.getElementById('root') as HTMLDivElement
 const root = createRoot(container)

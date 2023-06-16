@@ -1,8 +1,6 @@
-import { config } from 'config'
+import { config, engine } from '@'
+import { app } from '@lib'
 import { utils } from 'pixi.js'
-
-import { engine } from '@/engine/engine'
-import { app } from '@/lib/pixi'
 
 export function logEngineInfo() {
   console.log('Engine', engine)

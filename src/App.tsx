@@ -1,8 +1,8 @@
-import { config } from 'config'
+import { config } from '@'
+import { app } from '@lib'
 import { useLayoutEffect, useRef } from 'react'
 
 import { DebugInfo } from './ui/DebugInfo'
-import { app } from '@/lib/pixi'
 
 function App() {
   return (

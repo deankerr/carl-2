@@ -1,9 +1,6 @@
+import { Entity, store, world } from '@'
+import { app, rng } from '@lib'
 import { AnimatedSprite, Container, Sprite, Texture } from 'pixi.js'
-
-import { Entity, world } from '../entity'
-import { store } from '../store'
-import { app } from '@/lib/pixi'
-import { rng } from '@/lib/rng'
 
 // TODO Refactor - completely rethink sprite creation/definitions
 // ? standardise sprite containers to [bg, fg] - bg visible = null if not needed

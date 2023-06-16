@@ -1,6 +1,5 @@
+import { store } from '@'
 import { useStore } from 'statery'
-
-import { store } from '@/engine/store'
 
 export function DebugInfo() {
   const { viewport, stats, playerPosition } = useStore(store)

@@ -1,7 +1,6 @@
+import { entityTemplates } from '@'
 import { World } from 'miniplex'
 import { AnimatedSprite, Container, Sprite } from 'pixi.js'
-
-import { entityTemplates } from './templates'
 
 export type Entity = {
   id: number // ?

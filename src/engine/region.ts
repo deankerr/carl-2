@@ -1,7 +1,5 @@
-import { config } from 'config'
-
-import { Entity, EntityKey, create } from './entity'
-import { rng } from '@/lib/rng'
+import { Entity, EntityKey, config, create } from '@'
+import { rng } from '@lib'
 
 const { overworldWidth, overworldHeight } = config
 

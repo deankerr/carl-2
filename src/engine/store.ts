@@ -1,6 +1,5 @@
+import { config } from '@'
 import { makeStore } from 'statery'
-
-import { config } from '@/config'
 
 export const store = makeStore({
   viewport: {

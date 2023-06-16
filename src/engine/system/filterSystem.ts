@@ -1,4 +1,5 @@
-import { config } from 'config'
+import { config } from '@'
+import { app } from '@lib'
 import {
   AdvancedBloomFilter,
   CRTFilter,
@@ -6,8 +7,6 @@ import {
   ReflectionFilter,
 } from 'pixi-filters'
 import { Filter } from 'pixi.js'
-
-import { app } from '@/lib/pixi'
 
 export function createFilterSystem() {
   const godrays = new GodrayFilter()
