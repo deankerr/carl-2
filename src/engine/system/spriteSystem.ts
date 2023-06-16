@@ -26,8 +26,16 @@ export function createSpriteSystem() {
     //* update viewport location
     const viewport = { ...store.state.viewport }
     const anchor = player ? player.position : { x: 0, y: 0 }
-    viewport.x = anchor.x - Math.floor(viewport.width / 2)
-    viewport.y = anchor.y - Math.floor(viewport.height / 2)
+    viewport.x = calculateViewportPosition(
+      anchor.x,
+      viewport.width,
+      config.overworldWidth
+    )
+    viewport.y = calculateViewportPosition(
+      anchor.y,
+      viewport.height,
+      config.overworldHeight
+    )
 
     //* create sprite for new entities
     let spritesCreated = 0
@@ -140,6 +148,18 @@ export function createSpriteSystem() {
       },
     }))
   }
+}
+
+function calculateViewportPosition(
+  anchor: number,
+  viewportSize: number,
+  regionSize: number
+) {
+  const halfViewportSize = Math.floor(viewportSize / 2)
+  if (anchor < halfViewportSize) return 0
+  else if (anchor >= regionSize - halfViewportSize)
+    return regionSize - viewportSize
+  return anchor - halfViewportSize
 }
 
 function calculateScreenPosition(viewport: Viewport, position: Position) {
