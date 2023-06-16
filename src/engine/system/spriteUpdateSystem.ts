@@ -1,6 +1,7 @@
+import { config } from 'config'
+
 import { world } from '../entity'
 import { store } from '../store'
-import { config } from '@/.'
 import { app } from '@/lib/pixi'
 
 type Viewport = typeof store.state.viewport

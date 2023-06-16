@@ -1,3 +1,5 @@
+import { config } from 'config'
+
 import { create, world } from './entity'
 import { bindInput } from './input'
 import { createOutdoors } from './region'
@@ -7,7 +9,6 @@ import {
   spriteCreationSystem,
   spriteUpdateSystem,
 } from './system'
-import { config } from '@/.'
 import { app } from '@/lib/pixi'
 
 function createEngine() {

@@ -1,7 +1,7 @@
+import { config } from 'config'
 import { useLayoutEffect, useRef } from 'react'
 
 import { DebugInfo } from './ui/DebugInfo'
-import { config } from '@/.'
 import { app } from '@/lib/pixi'
 
 function App() {

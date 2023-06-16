@@ -1,6 +1,6 @@
+import { config } from 'config'
 import { utils } from 'pixi.js'
 
-import { config } from '@/.'
 import { engine } from '@/engine/engine'
 import { app } from '@/lib/pixi'
 

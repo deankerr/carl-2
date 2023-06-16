@@ -6,8 +6,6 @@ import App from './App'
 import { engine } from './engine/engine'
 import { loadAssetBundle } from './lib/pixi'
 
-export { config } from './config'
-
 await loadAssetBundle()
 engine.start()
 

@@ -1,3 +1,4 @@
+import { config } from 'config'
 import {
   AdvancedBloomFilter,
   CRTFilter,
@@ -6,7 +7,6 @@ import {
 } from 'pixi-filters'
 import { Filter } from 'pixi.js'
 
-import { config } from '@/.'
 import { app } from '@/lib/pixi'
 
 export function createFilterSystem() {
