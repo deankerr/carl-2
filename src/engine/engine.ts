@@ -2,9 +2,11 @@ import { create, world } from './entity'
 import { bindInput } from './input'
 import { createOutdoors } from './region'
 import { store } from './store'
-import { createFilterSystem } from './system/filterSystem'
-import { spriteCreationSystem } from './system/spriteCreationSystem'
-import { spriteUpdateSystem } from './system/spriteUpdateSystem'
+import {
+  createFilterSystem,
+  spriteCreationSystem,
+  spriteUpdateSystem,
+} from './system'
 import { app, config } from '@/.'
 
 const { playerSpawnPosition: pc } = config
