@@ -1,7 +1,7 @@
 import { config } from '@'
 import { Application, Assets } from 'pixi.js'
 
-import manifest from '../public/assets/manifest.json'
+import manifest from './manifest.json'
 
 const { tileSizePx, viewportWidth, viewportHeight } = config
 
