@@ -24,7 +24,7 @@ const sheets = [
     width: 16,
     height: 16,
     labels: [
-      'water_A1 water_A2 water_B1 water_B2 water_C1 water_C2 water_D1 water_D2',
+      'water_A1 water_A2 water_B1 water_B2 water_C1 water_C2 water_D1 water_D2 raindrop raindrop_unused raindrop_splash_1 raindrop_splash_2',
       'grass_a1 grass_a2 grass_a3 grass_a4 grass_a5 grass_a6 grass_a7 grass_a8',
       'grass_b1 grass_b2 grass_b3 grass_b4 grass_b5 grass_b6 grass_b7 grass_b8',
       'flower_1 flower_2 flower_3 flower_4 flower_5 flower_6 flower_7 flower_8 flower_b1 flower_b2 flower_b3 flower_b4 flower_b5',

@@ -153,6 +153,17 @@ const liquid = {
     layer: 2,
     animate: 1000,
   },
+  raindrop: {
+    sprite: ['raindrop'],
+    tint: pallette.e32Water[1],
+    layer: 3,
+  },
+  raindropSplash: {
+    sprite: ['raindrop_splash_1', 'raindrop_splash_2'],
+    tint: pallette.e32Water[1],
+    layer: 3,
+    animate: 200,
+  },
 } satisfies Record<string, Template>
 
 export const entityTemplates = {

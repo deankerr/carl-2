@@ -3,6 +3,7 @@ import { app } from '@lib'
 
 import {
   createFilterSystem,
+  rainSystem,
   spriteCreationSystem,
   spriteUpdateSystem,
 } from './system'
@@ -47,6 +48,7 @@ function createEngine() {
       spriteCreationSystem(),
       spriteUpdateSystem(),
       createFilterSystem(),
+      rainSystem(),
     ]
 
     const runSystems = (dt: number) => {

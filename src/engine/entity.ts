@@ -17,6 +17,12 @@ export type Entity = {
     y: number
   }
 
+  rain?: {
+    state: 'falling' | 'splash1' | 'splash2'
+    ttl: number
+    timestamp: number
+  }
+
   _sprite?: {
     container: Container
     background?: Sprite | AnimatedSprite
