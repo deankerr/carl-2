@@ -1,14 +1,14 @@
 import { create, store, world } from '@'
 import { rng } from '@lib'
 
-const dropletAmount = 10
-const dropTime = 500
-const dropTTL = 10
-const yStartRange = 5
+const dropletAmount = 40
+const dropTime = 16
+const splashTime = 200
 
 export function rainSystem() {
   const rainEntities = world.with('rain')
 
+  //* create droplet pool
   while (rainEntities.size < dropletAmount) {
     const droplet = create('raindrop', 0, 0)
     world.addComponent(droplet, 'rain', {
@@ -21,23 +21,46 @@ export function rainSystem() {
   return () => {
     for (const droplet of rainEntities) {
       if (Date.now() > droplet.rain.timestamp) {
+        //* rain splashing
+        if (
+          droplet.rain.state === 'splash' &&
+          Date.now() > droplet.rain.timestamp
+        ) {
+          droplet._sprite?.container.destroy()
+          world.remove(droplet)
+        }
+
+        //* falling rain
         if (droplet.rain.state === 'falling') {
           if (droplet.rain.ttl === 0) {
+            //* create splash
+            const splash = create(
+              'raindropSplash',
+              droplet.position.x,
+              droplet.position.y
+            )
+            world.addComponent(splash, 'rain', {
+              state: 'splash',
+              ttl: 0,
+              timestamp: Date.now() + splashTime,
+            })
+
             //* restart fall
             const { viewport } = store.state
-            const x = rng.int(viewport.x, viewport.x + viewport.width)
-            const y = rng.int(viewport.y, viewport.y - yStartRange) // ?
-            droplet.position.x = x
-            droplet.position.y = y
+            droplet.position.x = rng.int(
+              viewport.x,
+              viewport.x + viewport.width
+            )
+            droplet.position.y = viewport.y
+
             droplet.rain.ttl = rng.int(1, viewport.height)
             droplet.rain.timestamp = Date.now() + dropTime
-          } else {
-            //* move droplet
-            if (Date.now() > droplet.rain.timestamp) {
-              droplet.position.y++
-              droplet.rain.ttl--
-              droplet.rain.timestamp = Date.now() + dropTime
-            }
+          }
+          //* move droplet
+          if (Date.now() > droplet.rain.timestamp) {
+            droplet.position.y++
+            droplet.rain.ttl--
+            droplet.rain.timestamp = Date.now() + dropTime
           }
         }
       }

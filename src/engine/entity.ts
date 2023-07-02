@@ -18,7 +18,7 @@ export type Entity = {
   }
 
   rain?: {
-    state: 'falling' | 'splash1' | 'splash2'
+    state: 'falling' | 'splash'
     ttl: number
     timestamp: number
   }

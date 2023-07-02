@@ -162,7 +162,7 @@ const liquid = {
     sprite: ['raindrop_splash_1', 'raindrop_splash_2'],
     tint: pallette.e32Water[1],
     layer: 3,
-    animate: 200,
+    animate: 100,
   },
 } satisfies Record<string, Template>
 
