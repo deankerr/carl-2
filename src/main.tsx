@@ -6,8 +6,11 @@ import 'tailwindcss/tailwind.css'
 
 import App from './App'
 
-await loadAssetBundle()
-engine.init()
+loadAssetBundle()
+  .then(engine.init)
+  .catch((err) => {
+    throw typeof err === 'string' ? new Error(err) : new Error()
+  })
 
 const container = document.getElementById('root') as HTMLDivElement
 const root = createRoot(container)
