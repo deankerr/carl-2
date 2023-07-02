@@ -26,8 +26,15 @@ export function rainSystem() {
           droplet.rain.state === 'splash' &&
           Date.now() > droplet.rain.timestamp
         ) {
-          droplet._sprite?.container.destroy()
+          // TODO handle in a cleanup system
+          droplet._sprite?.container.destroy({ children: true })
           world.remove(droplet)
+          store.set((state) => ({
+            stats: {
+              ...state.stats,
+              spritesTotal: state.stats.spritesTotal - 1,
+            },
+          }))
         }
 
         //* falling rain

@@ -74,8 +74,6 @@ export function spriteCreationSystem() {
 
         const sprite = new AnimatedSprite(textures)
         sprite.animationSpeed = (1 / 60) * (1000 / entity.base.animate)
-        console.log(sprite.animationSpeed)
-        // sprite.animationSpeed = 1 / 60
         sprite.play()
 
         foreground = sprite
