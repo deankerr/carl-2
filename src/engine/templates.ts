@@ -35,7 +35,7 @@ const structure = {
 const flora = {
   tree: {
     sprite: 'tree',
-    tint: pallette.e32Tree,
+    tint: pallette.oryxPlant,
   },
 
   deadTree: {
@@ -45,12 +45,12 @@ const flora = {
 
   shrub: {
     sprite: ['shrub_1', 'shrub_2'],
-    tint: pallette.e32Tree,
+    tint: pallette.oryxPlant,
   },
 
   plant: {
     sprite: 'plant_1',
-    tint: pallette.e32Tree,
+    tint: pallette.oryxPlant,
   },
 
   flowers: {
@@ -74,7 +74,7 @@ const flora = {
       'grass_b7',
       'grass_b8',
     ],
-    tint: pallette.e32Grass,
+    tint: pallette.oryxGrass,
     tags: ['isGrass'],
   },
 
@@ -89,7 +89,7 @@ const flora = {
       'grass_b7',
       'grass_b8',
     ],
-    tint: pallette.e32DeadGrass,
+    tint: pallette.oryxDeadGrass,
   },
 } satisfies Record<string, Template>
 
