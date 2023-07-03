@@ -26,6 +26,37 @@ export function createOutdoors() {
 
   lake('waterA', [10, 8], 4)
   lake('waterA', [48, 22], 4)
+
+  create('woodWallTL', 30, 12)
+
+  create('woodWallT', 31, 12)
+  create('woodWallT', 32, 12)
+  create('woodWallT', 33, 12)
+  create('woodWallT', 34, 12)
+  create('woodWallT', 35, 12)
+
+  create('woodWallTR', 36, 12)
+
+  create('woodWallLR', 30, 13)
+  create('woodWallLR', 30, 14)
+  create('woodWallLR', 30, 15)
+  create('woodWallLR', 30, 16)
+  create('woodWallLR', 30, 17)
+
+  create('woodWallLR', 36, 13)
+  create('woodWallLR', 36, 14)
+  create('woodWallLR', 36, 15)
+  create('woodWallLR', 36, 16)
+  create('woodWallLR', 36, 17)
+
+  create('woodWallL', 30, 18)
+  create('woodWallR', 36, 18)
+
+  create('woodWallT', 31, 18)
+  create('woodWallT', 32, 18)
+  create('door', 33, 18)
+  create('woodWallT', 34, 18)
+  create('woodWallT', 35, 18)
 }
 
 export function createOcean() {
@@ -62,6 +93,21 @@ export function rectangle(
   for (let yi = y; yi < y + h; yi++) {
     for (let xi = x; xi < x + w; xi++) {
       create(key, xi, yi)
+    }
+  }
+}
+
+export function hollowRectangle(
+  key: EntityKey,
+  x: number,
+  y: number,
+  w: number,
+  h: number
+) {
+  for (let yi = y; yi < y + h; yi++) {
+    for (let xi = x; xi < x + w; xi++) {
+      if (yi === y || yi === y + h - 1 || xi === x || xi === x + w - 1)
+        create(key, xi, yi)
     }
   }
 }

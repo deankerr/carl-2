@@ -4,7 +4,8 @@
       "name": "bundle",
       "assets": {
         "oryx": "./assets/oryx16.json",
-        "environment": "./assets/environment16.json"
+        "environment": "./assets/environment16.json",
+        "structure": "./assets/structure.json"
       }
     }
   ]

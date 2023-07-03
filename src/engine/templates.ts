@@ -26,6 +26,61 @@ const structure = {
     tags: ['solid'],
   },
 
+  woodWallTL: {
+    sprite: 'wood_wall_TL',
+    tint: pallette.woodWall[0],
+    bgTint: pallette.woodWall[1],
+    tags: ['solid'],
+    layer: 4,
+  },
+
+  woodWallTR: {
+    sprite: 'wood_wall_TR',
+    tint: pallette.woodWall[0],
+    bgTint: pallette.woodWall[1],
+    tags: ['solid'],
+    layer: 4,
+  },
+
+  woodWallLR: {
+    sprite: 'wood_wall_LR',
+    tint: pallette.woodWall[0],
+    bgTint: pallette.woodWall[1],
+    tags: ['solid'],
+    layer: 4,
+  },
+
+  woodWallL: {
+    sprite: 'wood_wall_L',
+    tint: pallette.woodWall[0],
+    bgTint: pallette.woodWall[1],
+    tags: ['solid'],
+    layer: 4,
+  },
+
+  woodWallT: {
+    sprite: 'wood_wall_T',
+    tint: pallette.woodWall[0],
+    bgTint: pallette.woodWall[1],
+    tags: ['solid'],
+    layer: 4,
+  },
+
+  woodWallR: {
+    sprite: 'wood_wall_R',
+    tint: pallette.woodWall[0],
+    bgTint: pallette.woodWall[1],
+    tags: ['solid'],
+    layer: 4,
+  },
+
+  door: {
+    sprite: 'door_closed',
+    tint: pallette.woodWall[1],
+    tags: ['solid'],
+    layer: 4,
+  },
+
   path: {
     sprite: 'path',
     tint: '#262626',

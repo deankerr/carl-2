@@ -25,5 +25,6 @@ export const pallette = {
   e32Flowers: ['#b3452d', '#af7824', '#20a1ab', '#b7a644', '#b55088'],
   oryxGrass: ['#61711b'],
   oryxDeadGrass: ['#6e5246'],
-  oryxPlant: ['#3e7634']
+  oryxPlant: ['#3e7634'],
+  woodWall: ['#422320', '#733e39']
 }

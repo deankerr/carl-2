@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import fs from 'fs'
 
-const outputDir = './src/public/assets/'
+const outputDir = './public/assets/'
 
 const sheets = [
   {
@@ -32,6 +32,16 @@ const sheets = [
       'mushroom_1 mushroom_2 mushroom_3 mushroom_4',
       'shrub_1 shrub_2',
       'plant_1',
+    ],
+  },
+  {
+    name: 'structure',
+    width: 16,
+    height: 16,
+    labels: [
+      'wood_wall_TL wood_wall_TT wood_wall_TR',
+      'wood_wall_LR',
+      'wood_wall_L wood_wall_T wood_wall_R',
     ],
   },
 ]
